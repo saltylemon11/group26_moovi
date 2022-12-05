@@ -27,7 +27,6 @@ const sections = [
 
 function App() {
 
-
   return (
     <div className="App">
       <Container maxWidth='lg'>
@@ -35,7 +34,7 @@ function App() {
         <Grid container spacing={4}>
         </Grid>
         <Grid container spacing={5} sx={{ mt: 3 }}>
-          <Main title='Today' />
+          <Main />
           <Sidebar title={sidebar.title} movielist={sidebar.movielist} />
         </Grid>
       </Container>

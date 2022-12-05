@@ -49,9 +49,11 @@ function Header(props) {
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
+        width: '20ch',
         '&:focus': {
           width: '20ch',
+          border: 10,
+          borderColor: 'grey.500',
         },
       },
     },
@@ -61,13 +63,12 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite' }}>
-        {/* <Button size="small">Subscribe</Button> */}
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite', mx:'auto' }}>
         <Typography
           component="h2"
           variant="h5"
           color="inherit"
-          align="center"
+          align="left"
           noWrap
           sx={{ flex: 1 }}
         >

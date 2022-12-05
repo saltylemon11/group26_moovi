@@ -11,6 +11,7 @@ import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
+import Link from '@mui/material/Link';
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 //import { Card, CardContent, CardMedia} from '@mui/material'
 
@@ -108,6 +109,7 @@ function Slide(props) {
     <Typography variant="h6" gutterBottom>
       {title}
     </Typography>
+    <Link href='#'>More</Link>
     <TabContext value={value}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <TabList onChange={handleChange} aria-label="lab API tabs example">
