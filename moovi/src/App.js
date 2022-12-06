@@ -1,21 +1,31 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
-//import { CreateBrowserRouter, RouterProvider, Route, createBrowserRouter } from 'react-router-dom';
-import LandingPagePresenter from './components/LandingPagePresenter';
-import AppPresenter from './components/AppPresenter';
+import Header from './components/UI/header';
+import { StickyFooter } from './components/UI/footer';
+import Container from '@mui/system/Container';
+import Grid from '@mui/material/Grid';
+import logo from './components/logo32.webp'
+import { Outlet } from 'react-router-dom';
 
+// for test
+const sections = [
+  { title: 'Movies', url: '#' },
+  { title: 'TV Shows', url: '#' },
+  { title: 'Best Awards 2022', url: '#' }
+]
 
 function App() {
 
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<LandingPagePresenter />} />
-          <Route path='/HomePage' element={<AppPresenter />} />
-        </Routes>
-      </BrowserRouter>
+    <div className="App">
+      <Container maxWidth='lg'>
+        <Header title='Moovi' logo={logo} sections={sections} />
+        <Grid container spacing={0}>
+        </Grid>
+        <Outlet />
+      </Container>
+      <StickyFooter />
     </div>
   );
 }

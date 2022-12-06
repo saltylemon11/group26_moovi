@@ -13,6 +13,7 @@ import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import Link from '@mui/material/Link';
 import { TabContext, TabList, TabPanel } from '@mui/lab'
+import { ImageListWithText } from './list';
 //import { Card, CardContent, CardMedia} from '@mui/material'
 
 // for test
@@ -106,10 +107,13 @@ function Slide(props) {
   */}
 
   return (<Box sx={{ width: '100%', typography: 'body1' }}>
-    <Typography variant="h6" gutterBottom>
+    <Typography variant="h6" gutterBottom textAlign='left'>
       {title}
+      <Typography variant='body1'>
+        <Link href='#'>More</Link>
+        </Typography>
     </Typography>
-    <Link href='#'>More</Link>
+    
     <TabContext value={value}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -119,29 +123,29 @@ function Slide(props) {
         </TabList>
       </Box>
       <TabPanel value="1">
-        <ImageList sx={{ width: 450, height: 500 }}>
-          {movielist.map((m) => (
-            <ImageListItem key={m.img}>
-              <img
-                src={m.img}
-                alt={m.title}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                title={m.title}
-                position='below'
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-        <Pagination count={3} />
+        <SlideTab listData={movielist} />
       </TabPanel>
-      <TabPanel value="2">Item Two</TabPanel>
-      <TabPanel value="3">Item Three</TabPanel>
+      <TabPanel value="2">
+        <SlideTab listData={movielist} />
+      </TabPanel>
+      <TabPanel value="3">
+        <SlideTab listData={movielist} />
+      </TabPanel>
     </TabContext>
   </Box>
   );
 
+}
+
+function SlideTab(props) {
+  const { listData } = props
+  return (
+    <div>
+      <ImageListWithText listData={listData} />
+      {/* TODO: Controlled pagination */}
+      <Pagination count={3} />
+    </div>
+  )
 }
 
 

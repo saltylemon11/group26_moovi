@@ -8,18 +8,16 @@ import Link from '@mui/material/Link';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+    <Typography variant="body2" color="text.secondary" align="center">
+      <Link color="inherit" href="#">
+        Moovi
       </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+      Powered by React & &lt;3
     </Typography>
   );
 }
 
-export default function StickyFooter() {
+function StickyFooter() {
   return (
     <Box
       sx={{
@@ -56,3 +54,5 @@ export default function StickyFooter() {
     </Box>
   );
 }
+
+export {Copyright, StickyFooter}
