@@ -6,6 +6,8 @@ import SignUp from '../components/Auth/signUp';
 import SignIn from '../components/Auth/signIn'
 import ProfileMain from '../components/Profile/main';
 import ErrorPage from '../components/UI/errorpage';
+import { LibraryTab } from '../components/Profile/collection';
+import ToWatch from '../components/Profile/towatch';
 
 const router = createBrowserRouter([
     {
@@ -19,7 +21,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'mine',
-                element: <ProfileMain />
+                element: <ProfileMain />,
+                children: [
+                    {
+                        path: 'library',
+                        element: <LibraryTab />
+                    }
+                ]
             }
         ]
     },
@@ -31,6 +39,10 @@ const router = createBrowserRouter([
         path: 'login',
         element: <SignIn />
     },
+    {
+        path: 'towatch',
+        element: <ToWatch />
+    }
 ])
 
 export default router

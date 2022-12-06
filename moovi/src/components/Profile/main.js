@@ -9,9 +9,12 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-//import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { ListCommon, ListTimeline } from '../UI/list';
-import CollectionUI from './collection';
+import { LibraryTab } from './collection';
+import ToWatch from './towatch';
+import Watched from './watched';
+import InProgress from './inprogress';
 
 // for test
 const username = 'fluffyKitten'
@@ -37,26 +40,43 @@ function ProfileMain(props) {
                 </Stack>
                 <Divider />
                 <Box sx={{ width: '100%', typography: 'body1' }}>
+                    {/* TODO: Use NavTab */}
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <TabList onChange={handleChange} aria-label="lab API tabs example">
                                 <Tab label="Main Page" value="1" />
-                                <Tab label="Collection" value="2" />
+                                <Tab label="Library" value="2" />
                                 <Tab label="My Lists" value="3" />
+                                <Tab label='|' disabled />
+                                <Tab label="To Watch" value='4' />
+                                <Tab label='In Progress' value='5' />
+                                <Tab label='Watched' value='6' />
+                                <Tab label='|' disabled />
+                                <Tab label='Settings' value='7' />
                             </TabList>
                         </Box>
                         <TabPanel value="1">
                             {/* Quick Tracker */}
+                            <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
+                                TODO: Movie Tracker Here
+                            </Box>
                             {/* Timeline */}
                             <ListTimeline />
                         </TabPanel>
                         <TabPanel value="2">
-                            <CollectionUI title='To Watch' />
-                            <CollectionUI title='Watching' />
-                            <CollectionUI title='Have Watched' />
+                            <LibraryTab />
                         </TabPanel>
                         <TabPanel value="3">
                             <ListCommon />
+                        </TabPanel>
+                        <TabPanel value='4'>
+                            <ToWatch />
+                        </TabPanel>
+                        <TabPanel value='5'>
+                            <InProgress />
+                        </TabPanel>
+                        <TabPanel value='6'>
+                            <Watched />
                         </TabPanel>
                     </TabContext>
                 </Box>

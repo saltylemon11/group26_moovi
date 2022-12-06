@@ -4,6 +4,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
+import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
 import Avatar from "@mui/material/Avatar";
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid'
@@ -53,12 +54,15 @@ function ListCommon() {
 function ListTimeline() {
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <Typography variant='h4' gutterBottom align='left'>
+                Timeline
+            </Typography>
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    <Avatar alt="Alice Sharp" src="/static/images/avatar/1.jpg" />
                 </ListItemAvatar>
                 <ListItemText
-                    primary="Brunch this weekend?"
+                    primary="Alice watched The Walking Dead"
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -77,10 +81,10 @@ function ListTimeline() {
             <Divider variant="inset" component="li" />
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="Bob Howard" src="/static/images/avatar/2.jpg" />
                 </ListItemAvatar>
                 <ListItemText
-                    primary="Summer BBQ"
+                    primary="Bob wants to watch Star Wars: Andor"
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -89,9 +93,9 @@ function ListTimeline() {
                                 variant="body2"
                                 color="text.primary"
                             >
-                                to Scott, Alex, Jennifer
+                                Lorem Ipsum
                             </Typography>
-                            {" — Wish I could come, but I'm out of town this…"}
+                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit…"}
                         </React.Fragment>
                     }
                 />
@@ -102,7 +106,7 @@ function ListTimeline() {
                     <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
                 </ListItemAvatar>
                 <ListItemText
-                    primary="Oui Oui"
+                    primary="Cindy dropped Breaking Bad"
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -111,9 +115,9 @@ function ListTimeline() {
                                 variant="body2"
                                 color="text.primary"
                             >
-                                Sandra Adams
+                                Integer tortor massa
                             </Typography>
-                            {' — Do you have Paris recommendations? Have you ever…'}
+                            {' Cras viverra convallis metus, ut pellentesque urna rhoncus…'}
                         </React.Fragment>
                     }
                 />
@@ -122,4 +126,25 @@ function ListTimeline() {
     );
 }
 
-export { ListCommon, ListTimeline }
+function ImageListWithText(props) {
+    const { listData } = props 
+    return (
+        <ImageList sx={{ width: 450, height: 500 }}>
+        {listData.map((m) => (
+          <ImageListItem key={m.img}>
+            <img
+              src={m.img}
+              alt={m.title}
+              loading="lazy"
+            />
+            <ImageListItemBar
+              title={m.title}
+              position='below'
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+    )
+}
+
+export { ListCommon, ListTimeline, ImageListWithText }
