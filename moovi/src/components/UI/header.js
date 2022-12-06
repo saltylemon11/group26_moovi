@@ -7,8 +7,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-//import SignIn from '../Auth/signIn';
-//import SignUp from '../Auth/signUp'
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import { deepPurple } from '@mui/material/colors';
 
 function Header(props) {
   const { sections, logo, title } = props;
@@ -63,7 +64,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite', mx:'auto' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite', mx: 'auto' }}>
         <Typography
           component="h2"
           variant="h5"
@@ -72,7 +73,9 @@ function Header(props) {
           noWrap
           sx={{ flex: 1 }}
         >
-          <img src={logo} alt={title} />
+          <IconButton href='/'>
+            <img src={logo} alt={title} />
+          </IconButton>
         </Typography>
         <Search>
           <SearchIconWrapper>
@@ -83,12 +86,15 @@ function Header(props) {
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
-        <Button href='#login' variant='outlined' size='small'>
+        <Button href='/login' variant='outlined' size='small'>
           Log in
         </Button>
-        <Button href='#signup' variant="contained" size="small">
+        <Button href='/signup' variant="contained" size="small">
           Sign up
         </Button>
+        <IconButton href='/mine'>
+          <Avatar sx={{ bgcolor: deepPurple[500] }} alt='fluffyKitten'>FK</Avatar>
+        </IconButton>
       </Toolbar>
       <Toolbar
         component="nav"
