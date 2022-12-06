@@ -7,10 +7,10 @@ export default function LandingPagePresenter() {
     const navigate = useNavigate();
 
     const handleSignupClick = () => {
-        navigate('/home');
+        navigate('/signup');
     };
     const handleLoginClick = () => {
-        navigate('/home');
+        navigate('/login');
     };
 
     return (

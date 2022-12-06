@@ -4,6 +4,7 @@ import '../StarBackground.css';
 
 export default function LandingPage({ signupClick, loginClick }) {
     return (
+        <div className='wrapper'>
         <div className='star-background'>
             <div className='stars1'></div>
             <div className='stars2'></div>
@@ -21,6 +22,7 @@ export default function LandingPage({ signupClick, loginClick }) {
                     <span>Log in</span>
                 </Button>
             </div>
+        </div>
         </div>
     )
 }
