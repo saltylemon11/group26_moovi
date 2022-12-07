@@ -7,21 +7,18 @@ import SignIn from '../components/Auth/signIn'
 import ProfileMain from '../components/Profile/main';
 import ErrorPage from '../components/UI/errorpage';
 //import { LibraryTab } from '../components/Profile/collection';
-import ToWatch from '../components/Profile/towatch';
+//import ToWatch from '../components/Profile/towatch';
+//import LandingPagePresenter from '..'
+import Top100 from '../components/Home/top100';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <LandingPagePresenter />,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: '/home',
         element: <App />,
         errorElement: <ErrorPage />,
         children: [
             {
-                path: '/home',
+                path: '/',
                 element: <Home />,
             },
             {
