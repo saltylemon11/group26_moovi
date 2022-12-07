@@ -8,11 +8,8 @@ import './index.css';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes/route'
 
-
 const container = document.getElementById('root');
 const root = createRoot(container);
-
-
 
 root.render(
   <React.StrictMode>

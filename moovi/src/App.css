@@ -37,3 +37,70 @@
     transform: translateY(0px);
   }
 }
+
+/********** Landing Page **************/
+.wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+
+.landing-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-weight: 300;
+  font-size: 64px;
+  letter-spacing: 10px;
+  margin-top: -60px;
+  padding-left: 10px;
+}
+
+.landing-title span {
+  background: -webkit-linear-gradient(white, #38495a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.landing-buttons {
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.landing-buttons Button {
+  border-radius: 6px;
+  font-size: 20px;
+  padding: 0 10px 0 10px;
+}
+
+/********** Sign up and Log in Page **************/
+.auth-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.blur-background {
+  margin: auto;
+  margin-top: 1%;
+  width: fit-content;
+  height: fit-content;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  border-radius: 40px;
+  padding: 5px;
+}
+
+.alert {
+  color: rgb(179, 26, 26);
+  text-align: center;
+}
+
+

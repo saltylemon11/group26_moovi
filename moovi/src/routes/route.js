@@ -8,16 +8,20 @@ import ProfileMain from '../components/Profile/main';
 import ErrorPage from '../components/UI/errorpage';
 //import { LibraryTab } from '../components/Profile/collection';
 import ToWatch from '../components/Profile/towatch';
-import Top100 from '../components/Home/top100';
 
 const router = createBrowserRouter([
     {
         path: '/',
+        element: <LandingPagePresenter />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: '/home',
         element: <App />,
         errorElement: <ErrorPage />,
         children: [
             {
-                path: '/',
+                path: '/home',
                 element: <Home />,
             },
             {
