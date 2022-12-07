@@ -11,7 +11,7 @@ function Search(props){
             loading              
             type="search"
             size="medium"
-            variant="contained">Search</Button>
+            variant="text">Search</Button>
     </div>
     )
 }
