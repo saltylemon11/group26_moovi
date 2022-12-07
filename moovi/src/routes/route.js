@@ -6,8 +6,9 @@ import SignUp from '../components/Auth/signUp';
 import SignIn from '../components/Auth/signIn'
 import ProfileMain from '../components/Profile/main';
 import ErrorPage from '../components/UI/errorpage';
-import { LibraryTab } from '../components/Profile/collection';
+//import { LibraryTab } from '../components/Profile/collection';
 import ToWatch from '../components/Profile/towatch';
+import Top100 from '../components/Home/top100';
 
 const router = createBrowserRouter([
     {
@@ -22,12 +23,10 @@ const router = createBrowserRouter([
             {
                 path: 'mine',
                 element: <ProfileMain />,
-                children: [
-                    {
-                        path: 'library',
-                        element: <LibraryTab />
-                    }
-                ]
+            },
+            {
+                path: 'top100',
+                element: <Top100 />
             }
         ]
     },
@@ -38,10 +37,6 @@ const router = createBrowserRouter([
     {
         path: 'login',
         element: <SignIn />
-    },
-    {
-        path: 'towatch',
-        element: <ToWatch />
     }
 ])
 

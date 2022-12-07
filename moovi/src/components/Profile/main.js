@@ -15,6 +15,8 @@ import { LibraryTab } from './collection';
 import ToWatch from './towatch';
 import Watched from './watched';
 import InProgress from './inprogress';
+import Settings from './settings';
+import Tracker from './tracker';
 
 // for test
 const username = 'fluffyKitten'
@@ -40,13 +42,14 @@ function ProfileMain(props) {
                 </Stack>
                 <Divider />
                 <Box sx={{ width: '100%', typography: 'body1' }}>
-                    {/* TODO: Use NavTab */}
+                    {/* TODO: Use Router */}
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <TabList onChange={handleChange} aria-label="lab API tabs example">
                                 <Tab label="Main Page" value="1" />
                                 <Tab label="Library" value="2" />
                                 <Tab label="My Lists" value="3" />
+                                <Tab label='Friends' value='8' />
                                 <Tab label='|' disabled />
                                 <Tab label="To Watch" value='4' />
                                 <Tab label='In Progress' value='5' />
@@ -56,12 +59,13 @@ function ProfileMain(props) {
                             </TabList>
                         </Box>
                         <TabPanel value="1">
-                            {/* Quick Tracker */}
-                            <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
-                                TODO: Movie Tracker Here
-                            </Box>
-                            {/* Timeline */}
-                            <ListTimeline />
+                            <Stack direction='column'>
+                                <Typography variant="h4" gutterBottom>
+                                    Series Tracker
+                                </Typography>
+                                <Tracker />
+                                <ListTimeline />
+                            </Stack>
                         </TabPanel>
                         <TabPanel value="2">
                             <LibraryTab />
@@ -78,9 +82,16 @@ function ProfileMain(props) {
                         <TabPanel value='6'>
                             <Watched />
                         </TabPanel>
+                        <TabPanel value='7'>
+                            <Settings />
+                        </TabPanel>
+                        <TabPanel value='8'>
+                            <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
+                                TODO: Friends List Here
+                            </Box>
+                        </TabPanel>
                     </TabContext>
                 </Box>
-
             </Box>
         </div>
     );

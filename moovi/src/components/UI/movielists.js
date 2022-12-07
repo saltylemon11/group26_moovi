@@ -18,11 +18,11 @@ import { ImageListWithText } from './list';
 
 // for test
 const catimg = 'http://placekitten.com/g/300/400'
-const title = 'Trending'
+//const title = 'Trending'
 const movielist = [
-  { title: 'testtitle1', img: catimg, url: '#' },
-  { title: 'testtitle2', img: catimg, url: '#' },
-  { title: 'testtitle3', img: catimg, url: '#' },
+  { title: 'Title 1', img: catimg, url: '#' },
+  { title: 'Title 2', img: catimg, url: '#' },
+  { title: 'Title 3', img: catimg, url: '#' },
 ]
 
 /*

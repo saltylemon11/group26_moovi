@@ -3,10 +3,6 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-//import Card from '@mui/material/Card';
-//import CardContent from '@mui/material/CardContent';
-//import CardMedia from '@mui/material/CardMedia';
-//import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
@@ -31,6 +27,8 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 // checkbox
 import Checkbox from '@mui/material/Checkbox';
+// chips
+import Chip from '@mui/material/Chip';
 
 // for test
 const catimg = { img: 'http://placekitten.com/g/200/200', title: 'cat' }
@@ -82,6 +80,10 @@ function ItemUI(props) {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleChipClick = () => {
+        console.info('You clicked a chip.')
+    }
 
     // https://mui.com/material-ui/react-grid/
     const Img = styled('img')({
@@ -135,10 +137,11 @@ function ItemUI(props) {
                     </Grid>
                 </Grid>
             </Paper>
+            {/* Edit my review */}
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>My Review</DialogTitle>
                 <DialogContent>
-                    {/* radio group */}
+                    {/* categories */}
                     <FormControl>
                         <FormLabel id="demo-row-radio-buttons-group-label"></FormLabel>
                         <RadioGroup
@@ -154,6 +157,19 @@ function ItemUI(props) {
                     </FormControl>
                     {/* rating */}
                     <Rating name='size-medium' defaultValue={3.0} size='medium' />
+                    {/* Tags */}
+                    <Typography>My Tags:</Typography>
+                    <TextField
+                        margin="dense"
+                        width='25ch'
+                        variant="outlined"
+                        size='small'
+                    />
+                    <Stack direction='row' spacing={1}>
+                        <Chip label='Comedy' size='small' variant='outlined' onClick={handleChipClick}/>
+                        <Chip label='Looooovit!' size='small' variant='outlined' onClick={handleChipClick}/>
+                        <Chip label='Cat Lovers Best 100' size='small' variant='outlined' onClick={handleChipClick}/>
+                    </Stack>
                     {/* notes */}
                     <DialogContentText>
                         Brief note:
@@ -161,9 +177,9 @@ function ItemUI(props) {
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="name"
+                        multiline
                         fullWidth
-                        variant="standard"
+                        variant="outlined"
                     />
                     <FormControlLabel control={<Checkbox />} label="This is a PRIVATE note." />
                 </DialogContent>
@@ -174,29 +190,6 @@ function ItemUI(props) {
             </Dialog>
         </div>
     )
-
-    {/* 
-    return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image={img}
-                    alt={title}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tortor massa, egestas a pulvinar a, feugiat tincidunt dolor. Cras viverra convallis metus, ut pellentesque urna rhoncus facilisis.
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-        </Card>
-    )
-    */}
 }
 
 function ItemList(props) {

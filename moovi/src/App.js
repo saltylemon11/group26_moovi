@@ -11,7 +11,7 @@ import { Outlet } from 'react-router-dom';
 const sections = [
   { title: 'Movies', url: '#' },
   { title: 'TV Shows', url: '#' },
-  { title: 'Best Awards 2022', url: '#' }
+  { title: 'IMDb Top 100 Movies', url: '#' }
 ]
 
 function App() {

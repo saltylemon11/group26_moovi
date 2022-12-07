@@ -5,7 +5,7 @@ import ProfileSidebar from "./sidebar";
 import Stack from "@mui/material/Stack";
 
 // for test
-const catimg = { img: 'http://placekitten.com/g/200/200', title: 'My Fluffy Friends', description: 'A lots of fluffy cats. Love it.', date: '2022-12-02', myrate: '5.0' }
+const catimg = { img: 'http://placekitten.com/g/200/200', title: 'My Fluffy Friends', description: 'Lots of fluffy cats. Love it.', date: '2022-12-02', myrate: '5.0' }
 const itemData = new Array(9).fill(catimg)
 
 function WatchedMain(props) {

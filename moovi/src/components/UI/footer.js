@@ -29,7 +29,7 @@ function StickyFooter() {
       <CssBaseline />
       <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
         <Typography variant="h5" component="h2" gutterBottom>
-          {'footer'}
+          {''}
         </Typography>
       </Container>
       <Box
@@ -46,7 +46,7 @@ function StickyFooter() {
       >
         <Container maxWidth="sm">
           <Typography variant="body1">
-            My sticky footer can be found here.
+            This is a footer.
           </Typography>
           <Copyright />
         </Container>

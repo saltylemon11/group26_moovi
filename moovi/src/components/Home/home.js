@@ -8,9 +8,9 @@ const catimg = 'http://placekitten.com/g/200/300'
 const sidebar = {
     title: 'Trending',
     movielist: [
-        { title: 'testtitle1', img: catimg, url: '#' },
-        { title: 'testtitle2', img: catimg, url: '#' },
-        { title: 'testtitle3', img: catimg, url: '#' },
+        { title: 'Movie Title 1', img: catimg, url: '#' },
+        { title: 'Movie Title 2', img: catimg, url: '#' },
+        { title: 'Movie Title 3', img: catimg, url: '#' },
     ],
 }
 

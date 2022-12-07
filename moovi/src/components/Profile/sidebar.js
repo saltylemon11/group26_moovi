@@ -23,9 +23,11 @@ function ProfileSidebar(props) {
                     {title}
                 </Typography>
             </Paper>
-            {tagList.map((m) => (<Stack key={m.title}><Link display='block' href={m.url} key={m.title}>
+            {tagList.map((m) => (<Stack key={m.title}><Typography variant='body1' align='left'><Link display='block' href={m.url} key={m.title}>
                 {m.title}
             </Link>
+            {m.num}
+            </Typography>
             </Stack>
             ))}
         </Grid>
