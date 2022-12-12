@@ -1,11 +1,9 @@
-// TODO
 function resolvePromise(promiseToResolve, promiseState, notify) {
     if (!promiseToResolve) return <div>No data</div> // check if no promise here
     promiseState.promise = promiseToResolve
     promiseState.data = null
     promiseState.error = null
-    // TW3
-    // notify is a ACB
+
     if (notify) notify()
     
     function saveDataACB(result){

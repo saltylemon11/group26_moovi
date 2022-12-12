@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 //import Typography from '@mui/material/Typography';
 //import Divider from '@mui/material/Divider';
-import { SlideTrending, Slide } from '../UI/movielists';
+import { SlideTrending, Slide } from '../../shared/movielists';
 
-function Main(props) {
+function HomeMainView(props) {
   //const { title } = props;
 
   return (
@@ -21,8 +21,8 @@ function Main(props) {
   );
 }
 
-Main.propTypes = {
+HomeMainView.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default Main;
+export default HomeMainView;

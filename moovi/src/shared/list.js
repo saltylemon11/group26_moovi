@@ -4,12 +4,14 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
-import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
 import Avatar from "@mui/material/Avatar";
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid'
 import Typography from "@mui/material/Typography";
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import ImageList from '@mui/material/ImageList'
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
 
 function generate(element) {
     return [0, 1, 2].map((value) =>

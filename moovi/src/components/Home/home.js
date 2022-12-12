@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from '../Home/sidebar'
-import Main from '../Home/main'
+import SidebarView from '../Home/sidebar'
+import HomeMainView from '../Home/main'
 import Grid from '@mui/material/Grid'
 
 // for test
@@ -14,15 +14,15 @@ const sidebar = {
     ],
 }
 
-function Home() {
+function HomeView() {
     return (
         <div>
             <Grid container spacing={5} sx={{ mt: 3 }}>
-                <Main />
-                <Sidebar title={sidebar.title} movielist={sidebar.movielist} />
+                <HomeMainView />
+                <SidebarView title={sidebar.title} movielist={sidebar.movielist} />
             </Grid>
         </div>
     )
 }
 
-export default Home
+export default HomeView

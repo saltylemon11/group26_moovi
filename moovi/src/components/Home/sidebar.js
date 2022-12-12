@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-function Sidebar(props) {
+function SidebarView(props) {
     const { title, movielist } = props
 
     return (
@@ -27,4 +27,4 @@ function Sidebar(props) {
     )
 }
 
-export default Sidebar
+export default SidebarView

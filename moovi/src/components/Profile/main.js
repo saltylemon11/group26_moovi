@@ -10,12 +10,12 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { Outlet } from 'react-router-dom';
-import { ListCommon, ListTimeline } from '../UI/list';
+import { ListCommon, ListTimeline } from '../../shared/list';
 import { LibraryTab } from './collection';
 import ToWatch from './towatch';
 import Watched from './watched';
 import InProgress from './inprogress';
-import Settings from './settings';
+import SettingsView from './settings';
 import Tracker from './tracker';
 
 // for test
@@ -83,7 +83,7 @@ function ProfileMain(props) {
                             <Watched />
                         </TabPanel>
                         <TabPanel value='7'>
-                            <Settings />
+                            <SettingsView />
                         </TabPanel>
                         <TabPanel value='8'>
                             <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
