@@ -13,8 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
-import "../StarBackground.css";
+import "../../shared/StarBackground.css";
 import "../../App.css";
 
 function Copyright(props) {
@@ -35,17 +34,16 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const navigate = useNavigate();
+function LoginView(props) {
+  const { onSubmit } = props
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    onSubmit({
       email: data.get("email"),
       password: data.get("password"),
     });
-    navigate("/home");
   };
 
   return (
@@ -133,3 +131,5 @@ export default function SignIn() {
     </div>
   );
 }
+
+export default LoginView

@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box'
 
-function Settings(){
+function SettingsView(){
     return (
         <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
         TODO: Account Settings Here
@@ -8,4 +8,4 @@ function Settings(){
     )
 }
 
-export default Settings
+export default SettingsView

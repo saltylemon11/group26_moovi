@@ -1,28 +1,25 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
-import Home from '../components/Home/home'
-import SignUp from '../components/Auth/signUp';
-import SignIn from '../components/Auth/signIn'
-import ProfileMain from '../components/Profile/main';
-import ErrorPage from '../components/UI/errorpage';
+import App from './App';
+import HomeView from './components/Home/home'
+import SignUpPresenter from './components/Auth/signUpPresenter';
+import LoginPresenter from './components/Auth/loginPresenter'
+import ProfileMain from './components/Profile/main';
+import ErrorPage from './shared/errorpage';
 //import { LibraryTab } from '../components/Profile/collection';
-import ToWatch from '../components/Profile/towatch';
+//import ToWatch from '../components/Profile/towatch';
+//import LandingPagePresenter from '..'
+import Top100 from './components/Home/top100';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <LandingPagePresenter />,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: '/home',
         element: <App />,
         errorElement: <ErrorPage />,
         children: [
             {
-                path: '/home',
-                element: <Home />,
+                path: '/',
+                element: <HomeView />,
             },
             {
                 path: 'mine',
@@ -36,11 +33,11 @@ const router = createBrowserRouter([
     },
     {
         path: 'signup',
-        element: <SignUp />
+        element: <SignUpPresenter />
     },
     {
         path: 'login',
-        element: <SignIn />
+        element: <LoginPresenter />
     }
 ])
 

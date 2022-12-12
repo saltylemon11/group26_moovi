@@ -73,7 +73,7 @@ function Header(props) {
           noWrap
           sx={{ flex: 1 }}
         >
-          <IconButton href='/home'>
+          <IconButton href='/'>
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
@@ -86,6 +86,8 @@ function Header(props) {
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
+        <Button href='/login' variant='contained'>Log in</Button>
+        <Button href='/signup' variant='outlined'>Sign up</Button>
         <IconButton href='/mine'>
           <Avatar sx={{ bgcolor: deepPurple[500] }} alt='fluffyKitten'>FK</Avatar>
         </IconButton>

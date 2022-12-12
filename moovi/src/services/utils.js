@@ -4,7 +4,7 @@ async function apiCall(options) {
     const op = {
         method: options.method,
         headers: {
-            'X-RapidAPI-Key': options.key,
+            'X-RapidAPI-Key': options.apiKey,
             'X-RapidAPI-Host': options.host
         }
     }
@@ -20,4 +20,5 @@ function getIMDB100(){
     return apiCall(optionsIMDB100)
 }
 
-export { apiCall, getIMDB100 }
+export { getIMDB100 }
+

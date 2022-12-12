@@ -2,30 +2,47 @@
 import React from "react";
 import { ItemList } from "../Profile/collection";
 import Pagination from "@mui/material/Pagination";
-import { getIMDB100 } from "../../API/utils";
+import { getIMDB100 } from "../../services/utils";
 import { Stack } from "@mui/material";
+import resolvePromise from "../../services/resolvePromise";
+import promiseNoData from "../../services/promiseNoData";
 
 function Top100() {
-    const [data, setData] = React.useState({})
+    const [promiseState] = React.useState({})
+    const [, reRender] = React.useState()
 
-    React.useEffect(() => {
-        const fetchData = () => {
-            const result = getIMDB100()
-            setData(result)
+    function notify() {
+        reRender(new Object())
+    }
+
+    function onStart() {
+        if (!promiseState.promise) {
+            resolvePromise(getIMDB100(), promiseState, notify)
         }
-        fetchData()
-    }, [])
+        return 
+    }
 
-    //console.log(data)
-
-    return (<div>
+    function renderPage() {
+        const data = promiseState.data
+        return (
+            <div>
                 <Stack direction='column'>
                     <div>Header</div>
-                    <div>{data.results}</div>
+                    <ItemList listData={data} />
                     <Pagination count={3} />
                 </Stack>
             </div>
-            )
+        )
+    }
+
+    //console.log(data)
+
+    return (<div>{
+        onStart()
+    } {
+            promiseNoData(promiseState) || renderPage()
+
+        }</div>)
 
 }
 
