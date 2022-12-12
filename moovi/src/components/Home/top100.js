@@ -2,10 +2,10 @@
 import React from "react";
 import { ItemList } from "../Profile/collection";
 import Pagination from "@mui/material/Pagination";
-import { getIMDB100 } from "../../API/utils";
+import { getIMDB100 } from "../../services/utils";
 import { Stack } from "@mui/material";
-import resolvePromise from "../../API/resolvePromise";
-import promiseNoData from "../../API/promiseNoData";
+import resolvePromise from "../../services/resolvePromise";
+import promiseNoData from "../../services/promiseNoData";
 
 function Top100() {
     const [promiseState] = React.useState({})
