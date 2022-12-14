@@ -1,6 +1,6 @@
 import React from "react";
-import SidebarView from '../Home/sidebar'
-import HomeMainView from '../Home/main'
+import SidebarView from './sidebarView'
+import MainView from './mainView'
 import Grid from '@mui/material/Grid'
 
 // for test
@@ -18,7 +18,7 @@ function HomeView() {
     return (
         <div>
             <Grid container spacing={5} sx={{ mt: 3 }}>
-                <HomeMainView />
+                <MainView />
                 <SidebarView title={sidebar.title} movielist={sidebar.movielist} />
             </Grid>
         </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import HomeView from './components/Home/home'
-import SignUpPresenter from './components/Auth/signUpPresenter';
-import LoginPresenter from './components/Auth/loginPresenter'
-import ProfileMain from './components/Profile/main';
+import Home from './components/Home/homePresenter'
+import SignUp from './components/Auth/signUpPresenter';
+import Login from './components/Auth/loginPresenter'
+import Profile from './components/Profile/profilePresenter';
 import ErrorPage from './shared/errorpage';
 //import { LibraryTab } from '../components/Profile/collection';
 //import ToWatch from '../components/Profile/towatch';
@@ -19,11 +19,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <HomeView />,
+                element: <Home />,
             },
             {
-                path: 'mine',
-                element: <ProfileMain />,
+                path: 'profile',
+                element: <Profile />,
             },
             {
                 path: 'top100',
@@ -33,11 +33,11 @@ const router = createBrowserRouter([
     },
     {
         path: 'signup',
-        element: <SignUpPresenter />
+        element: <SignUp />
     },
     {
         path: 'login',
-        element: <LoginPresenter />
+        element: <Login />
     }
 ])
 

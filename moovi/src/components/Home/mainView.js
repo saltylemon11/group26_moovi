@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 //import Divider from '@mui/material/Divider';
 import { SlideTrending, Slide } from '../../shared/movielists';
 
-function HomeMainView(props) {
+function MainView(props) {
   //const { title } = props;
 
   return (
@@ -21,8 +21,8 @@ function HomeMainView(props) {
   );
 }
 
-HomeMainView.propTypes = {
+MainView.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default HomeMainView;
+export default MainView;

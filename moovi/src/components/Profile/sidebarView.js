@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-function ProfileSidebar(props) {
+function SidebarView(props) {
     // const { title, tagList } = props
     // for test
     const title = 'Tags'
@@ -34,4 +34,4 @@ function ProfileSidebar(props) {
     )
 }
 
-export default ProfileSidebar
+export default SidebarView

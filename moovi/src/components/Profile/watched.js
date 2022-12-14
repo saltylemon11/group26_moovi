@@ -1,7 +1,7 @@
 import React from "react";
 import Pagination from "@mui/material/Pagination";
 import { ItemList } from "./collection";
-import ProfileSidebar from "./sidebar";
+import ProfileSidebar from "./sidebarView";
 import Stack from "@mui/material/Stack";
 
 // for test

@@ -19,13 +19,15 @@ import SettingsView from './settings';
 import Tracker from './tracker';
 
 // for test
-const username = 'fluffyKitten'
 const avatar = 'https://placekitten.com/100/100'
 
 
-function ProfileMain(props) {
+function ProfileView(props) {
     //const { username, avatar } = props;
     const [value, setValue] = React.useState('1');
+    const { username } = props
+    
+    console.log(username)
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -97,8 +99,8 @@ function ProfileMain(props) {
     );
 }
 
-ProfileMain.propTypes = {
+ProfileView.propTypes = {
     username: PropTypes.string.isRequired,
 };
 
-export default ProfileMain;
+export default ProfileView;

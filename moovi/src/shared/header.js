@@ -10,11 +10,15 @@ import Link from '@mui/material/Link';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import { deepPurple } from '@mui/material/colors';
+import { useAuthValue } from '../authContext';
 
 function Header(props) {
   const { sections, logo, title } = props;
   //const sections = [{title: 'test', url: ''}]
   //const title = props.title
+  console.log('header', useAuthValue())
+  const { currentUser } = useAuthValue()
+  //console.log('header',currentUser)
 
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -86,11 +90,15 @@ function Header(props) {
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
-        <Button href='/login' variant='contained'>Log in</Button>
-        <Button href='/signup' variant='outlined'>Sign up</Button>
-        <IconButton href='/mine'>
-          <Avatar sx={{ bgcolor: deepPurple[500] }} alt='fluffyKitten'>FK</Avatar>
-        </IconButton>
+        {currentUser ?
+          <IconButton href='/profile'>
+            <Avatar sx={{ bgcolor: deepPurple[500] }} alt='userAvatar'>Me</Avatar>
+          </IconButton> :
+          <div>
+            <Button href='/login' variant='contained'>Log in</Button>
+            <Button href='/signup' variant='outlined'>Sign up</Button>
+          </div>
+        }
       </Toolbar>
       <Toolbar
         component="nav"

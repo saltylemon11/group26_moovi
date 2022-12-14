@@ -1,36 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
+import { auth } from './firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 
+// https://firebase.google.com/docs/auth/web/password-auth
 const signupUser = createAsyncThunk(
     "users/signup",
     async(data, thunkAPI) => {
-        const { name, email, password } = data
+        const { email, password } = data
         try {
-            const option = {
-                method: 'POST',
-                headers: {
-                    //something
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password,
-                })
+            const response = await createUserWithEmailAndPassword(auth, email, password)
+            // email, uid, displayName toka
+            let data = response.user
+            return {
+                uid: data.uid,
+                email: data.email
             }
-            const response = await fetch('someurl', option)
-            let data = await response.json()
-            if (response.ok) {
-                localStorage.setItem('token', data.token)
-                return {
-                    ...data,
-                    username: name,
-                    email: email,
-                }
-            } else {
-                return thunkAPI.rejectWithValue(data)
-            }
-        } catch(e) {
-            console.log('Error', e.response.data)
-            return thunkAPI.rejectWithValue(e.response.data)
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e)
         }
     }
 )
@@ -40,29 +26,19 @@ const loginUser = createAsyncThunk(
     async(data, thunkAPI) => {
         const { email, password } = data
         try {
-            const option = {
-                method: 'POST',
-                headers: {
-                    //something
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                })
+            const response = await signInWithEmailAndPassword(auth, email, password)
+            let data = response.user
+            return {
+                uid: data.uid,
+                email: data.email
             }
-            const response = await fetch('someurl', option)
-            let data = await response.json()
-            if (response.ok) {
-                localStorage.setItem('token', data.token)
-                return data
-            } else {
-                return thunkAPI.rejectWithValue(data)
-            }
-        } catch(e) {
-            console.log('Error', e.response.data)
-            return thunkAPI.rejectWithValue(e.response.data)
+        } catch (e) {
+            console.log(e.message)
+            return thunkAPI.rejectWithValue(e.message)
         }
     }
 )
 
-export { signupUser, loginUser }
+const currentUser = auth.currentUser
+
+export { signupUser, loginUser, currentUser }
