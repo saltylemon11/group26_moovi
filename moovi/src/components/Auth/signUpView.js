@@ -38,13 +38,13 @@ function SignUpView(props) {
     e.preventDefault();
     const data = new FormData(e.currentTarget)
     onSubmit({
-      username: data.get('username'),
       email: data.get('email'),
       password: data.get('password')
     })
   }
 
 
+  // pwd should be >= 6 characters
   return (
 
     <div className="auth-wrapper">
@@ -75,17 +75,6 @@ function SignUpView(props) {
                 onSubmit={handleSubmit}
                 sx={{ mt: 3 }}
               >
-                <Grid item xs={12}>
-                  <TextField
-                    autoComplete="username"
-                    name="username"
-                    required
-                    fullWidth
-                    id="username"
-                    label="Username"
-                    autoFocus
-                  />
-                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required

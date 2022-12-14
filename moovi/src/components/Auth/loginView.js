@@ -123,7 +123,6 @@ function LoginView(props) {
                 </Grid>
               </Box>
             </Box>
-            <p className="alert">Click button to log in</p>
             <Copyright sx={{ mt: 4, mb: 4 }} />
           </Container>
         </div>

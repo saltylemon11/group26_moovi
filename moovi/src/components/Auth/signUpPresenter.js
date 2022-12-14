@@ -5,7 +5,7 @@ import { signupUser } from "../../services/user";
 import { useNavigate } from "react-router-dom";
 import SignUpView from "./signUpView";
 
-function SignUpPresenter() {
+function SignUp() {
     const dispatch = useDispatch()
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector)
 
@@ -36,4 +36,4 @@ function SignUpPresenter() {
     return <SignUpView onSubmit={onSubmit} />
 }
 
-export default SignUpPresenter
+export default SignUp
