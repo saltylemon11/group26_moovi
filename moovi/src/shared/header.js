@@ -11,14 +11,20 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import { deepPurple } from '@mui/material/colors';
 import { useAuthValue } from '../authContext';
+import { signOut } from 'firebase/auth'
+import { auth } from '../services/firebase';
 
 function Header(props) {
   const { sections, logo, title } = props;
   //const sections = [{title: 'test', url: ''}]
   //const title = props.title
-  console.log('header', useAuthValue())
+  //console.log('header', useAuthValue())
   const { currentUser } = useAuthValue()
   //console.log('header',currentUser)
+
+  const Logout = async () => {
+    await signOut(auth);
+  }
 
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -90,11 +96,14 @@ function Header(props) {
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
-        {currentUser ?
-          <IconButton href='/profile'>
-            <Avatar sx={{ bgcolor: deepPurple[500] }} alt='userAvatar'>Me</Avatar>
-          </IconButton> :
-          <div>
+        {currentUser
+          ? <div>
+            <IconButton href='/profile'>
+              <Avatar sx={{ bgcolor: deepPurple[500] }} alt='userAvatar'>Me</Avatar>
+            </IconButton>
+            <Button href='/' variant='outlined' onClick={Logout}>Log out</Button>
+          </div>
+          : <div>
             <Button href='/login' variant='contained'>Log in</Button>
             <Button href='/signup' variant='outlined'>Sign up</Button>
           </div>
