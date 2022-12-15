@@ -25,9 +25,8 @@ const avatar = 'https://placekitten.com/100/100'
 function ProfileView(props) {
     //const { username, avatar } = props;
     const [value, setValue] = React.useState('1');
-    const { username } = props
-    
-    console.log(username)
+    const { user } = props
+    const { displayName, email, photoURL, uid } = user
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -37,9 +36,9 @@ function ProfileView(props) {
         <div>
             <Box>
                 <Stack direction='row'>
-                    <img src={avatar} alt={username} />
+                    <img src={avatar} alt={email} />
                     <Typography variant="h3" gutterBottom>
-                        {username}
+                        {email}
                     </Typography>
                 </Stack>
                 <Divider />
@@ -51,7 +50,7 @@ function ProfileView(props) {
                                 <Tab label="Main Page" value="1" />
                                 <Tab label="Library" value="2" />
                                 <Tab label="My Lists" value="3" />
-                                <Tab label='Friends' value='8' />
+                                {/* <Tab label='Friends' value='8' /> */}
                                 <Tab label='|' disabled />
                                 <Tab label="To Watch" value='4' />
                                 <Tab label='In Progress' value='5' />
@@ -66,7 +65,7 @@ function ProfileView(props) {
                                     Series Tracker
                                 </Typography>
                                 <Tracker />
-                                <ListTimeline />
+                                {/* <ListTimeline /> */}
                             </Stack>
                         </TabPanel>
                         <TabPanel value="2">
@@ -87,11 +86,13 @@ function ProfileView(props) {
                         <TabPanel value='7'>
                             <SettingsView />
                         </TabPanel>
+                        {/*
                         <TabPanel value='8'>
                             <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
                                 TODO: Friends List Here
                             </Box>
                         </TabPanel>
+                        */}
                     </TabContext>
                 </Box>
             </Box>
