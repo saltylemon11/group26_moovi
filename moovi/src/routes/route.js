@@ -9,6 +9,7 @@ import ErrorPage from '../components/UI/errorpage';
 import { LibraryTab } from '../components/Profile/collection';
 import ToWatch from '../components/Profile/towatch';
 import LandingPagePresenter from '../components/LandingPagePresenter';
+import RecommendationPresenter from '../components/Recommendation/recommendationPresenter';
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
     {
         path: 'towatch',
         element: <ToWatch />
+    },
+    {
+        path: '/recommendation',
+        element: <RecommendationPresenter />
     }
 ])
 

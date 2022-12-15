@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default function recommendation() {
+export default function Recommendation() {
     return (
         <div>Init page</div>
     )

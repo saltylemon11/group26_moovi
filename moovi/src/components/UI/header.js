@@ -95,6 +95,16 @@ function Header(props) {
         variant="dense"
         sx={{ justifyContent: 'space-between', overflowX: 'auto', backgroundColor: 'ghostwhite' }}
       >
+        <Link
+            color="inherit"
+            noWrap
+            key="Recommendation"
+            variant="body2"
+            href="/recommendation"
+            sx={{ p: 1, flexShrink: 0 }}
+          >
+            Recommendation
+          </Link>
         {sections.map((section) => (
           <Link
             color="inherit"
