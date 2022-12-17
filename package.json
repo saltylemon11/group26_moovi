@@ -1,9 +1,4 @@
 {
-  "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.10.15"
-  },
   "devDependencies": {
     "sass": "^1.56.1",
     "standard": "^17.0.0"

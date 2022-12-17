@@ -6,7 +6,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import Header from "../UI/header";
-import logo from "../../components/logo32.webp";
+import logo from "../../shared/logo32.webp";
 import { Box } from "@mui/system";
 
 const sections = [
