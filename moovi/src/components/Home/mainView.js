@@ -11,8 +11,8 @@ function MainView(props) {
   return (
     <Grid item xs={12} md={8}>
       <SlideTrending title="Trending" />
-      <Slide title="Movies" />
-      <Slide title="Shows" />
+      {/* <Slide title="Movies" /> */}
+      {/* <Slide title="Shows" /> */}
     </Grid>
   );
 }

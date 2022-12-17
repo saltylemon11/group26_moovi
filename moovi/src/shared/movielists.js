@@ -103,8 +103,8 @@ function Slide(props) {
   }
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
-      <Typography variant="h6" gutterBottom textAlign="left">
+    <Box sx={{ width: "fit-content", typography: "h1" }}>
+      <Typography variant="h4" gutterBottom textAlign="left">
         {title}
         <Typography variant="body1">
           <Link href="#">More</Link>

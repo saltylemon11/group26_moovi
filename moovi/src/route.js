@@ -10,6 +10,9 @@ import ErrorPage from "./shared/errorpage";
 //import ToWatch from '../components/Profile/towatch';
 import LandingPagePresenter from "./components/LandingPage/LandingPagePresenter";
 import Top100 from "./components/Home/top100";
+import MovieView from "./components/Home/movieView";
+import TVshows from "./components/Home/TVshows";
+
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "top100",
         element: <Top100 />,
+      },
+      {
+        path: "movies",
+        element: <MovieView />,
+      },
+      {
+        path: "shows",
+        element: <TVshows />,
       },
     ],
   },

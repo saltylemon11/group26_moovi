@@ -13,8 +13,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // for test
 const sections = [
-  { title: "Movies", url: "#" },
-  { title: "TV Shows", url: "#" },
+  { title: "Movies", url: "movies" },
+  { title: "TV Shows", url: "shows" },
   { title: "IMDb Top 100 Movies", url: "top100" },
 ];
 //https://mui.com/material-ui/customization/dark-mode/
@@ -38,7 +38,7 @@ function App() {
       {/* <ThemeProvider theme={darkTheme}> */}
       <div className="App">
         <Header title="Moovi" logo={logo} sections={sections} />
-        <Container maxWidth="lg">
+        <Container>
           <Grid container spacing={0}></Grid>
           <Outlet />
         </Container>

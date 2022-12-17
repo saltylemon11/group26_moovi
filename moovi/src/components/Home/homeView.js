@@ -20,7 +20,7 @@ function HomeView() {
     <div>
       <Grid container spacing={5} sx={{ mt: 3 }} className="blur-background">
         <MainView />
-        <SidebarView title={sidebar.title} movielist={sidebar.movielist} />
+        {/* <SidebarView title={sidebar.title} movielist={sidebar.movielist} /> */}
       </Grid>
     </div>
   );
