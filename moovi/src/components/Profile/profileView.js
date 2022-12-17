@@ -17,6 +17,7 @@ import Watched from "./watched";
 import InProgress from "./inprogress";
 import SettingsView from "./settings";
 import Tracker from "./tracker";
+import "../../App.css";
 
 // for test
 const avatar = "https://placekitten.com/100/100";
@@ -33,9 +34,9 @@ function ProfileView(props) {
 
   return (
     <div>
-      <Box>
+      <Box className="blur-background">
         <Stack direction="row">
-          <img src={avatar} alt={email} />
+          <img src={avatar} alt={email} className="profile-pic" />
           <Typography variant="h3" gutterBottom>
             {email}
           </Typography>

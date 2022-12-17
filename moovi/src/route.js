@@ -9,6 +9,7 @@ import ErrorPage from "./shared/errorpage";
 //import { LibraryTab } from '../components/Profile/collection';
 //import ToWatch from '../components/Profile/towatch';
 //import LandingPagePresenter from '..'
+import LandingPagePresenter from "./components/LandingPage/LandingPagePresenter";
 import Top100 from "./components/Home/top100";
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <LandingPagePresenter />,
+      },
+      {
+        path: "home",
         element: <Home />,
       },
       {
