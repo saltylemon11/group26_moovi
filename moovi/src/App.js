@@ -37,8 +37,8 @@ function App() {
     <AuthProvider value={{ currentUser }}>
       {/* <ThemeProvider theme={darkTheme}> */}
       <div className="App">
+        <Header title="Moovi" logo={logo} sections={sections} />
         <Container maxWidth="lg">
-          <Header title="Moovi" logo={logo} sections={sections} />
           <Grid container spacing={0}></Grid>
           <Outlet />
         </Container>

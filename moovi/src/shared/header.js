@@ -88,7 +88,7 @@ function Header(props) {
           noWrap
           sx={{ flex: 1 }}
         >
-          <IconButton href="/">
+          <IconButton href="/home">
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
