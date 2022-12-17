@@ -7,35 +7,36 @@ import LoginView from "./loginView";
 //import { useAuthValue } from "../../authContext";
 
 function Login() {
-    const dispatch = useDispatch()
-    const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector)
-    //const { currentUser } = useAuthValue()
+  const dispatch = useDispatch();
+  const { isFetching, isSuccess, isError, errorMessage } =
+    useSelector(userSelector);
+  //const { currentUser } = useAuthValue()
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        //console.log(data)
-        dispatch(loginUser(data))
+  const onSubmit = (data) => {
+    //console.log(data)
+    dispatch(loginUser(data));
+  };
+
+  React.useEffect(() => {
+    return () => {
+      dispatch(clearState());
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      dispatch(clearState());
+      navigate("/");
     }
+    if (isError) {
+      console.log(errorMessage);
+      dispatch(clearState());
+    }
+  }, [isSuccess, isError]);
 
-    React.useEffect(() => {
-        return () => {
-            dispatch(clearState())
-        }
-    }, [])
-
-    React.useEffect(() => {
-        if (isSuccess) {
-            dispatch(clearState())
-            navigate("/")
-        }
-        if (isError) {
-            console.log(errorMessage)
-            dispatch(clearState())
-        }
-    }, [isSuccess, isError])
-
-    return <LoginView onSubmit={onSubmit} />
+  return <LoginView onSubmit={onSubmit} />;
 }
 
-export default Login
+export default Login;

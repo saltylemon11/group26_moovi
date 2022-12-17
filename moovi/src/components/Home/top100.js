@@ -8,42 +8,40 @@ import resolvePromise from "../../services/resolvePromise";
 import promiseNoData from "../../services/promiseNoData";
 
 function Top100() {
-    const [promiseState] = React.useState({})
-    const [, reRender] = React.useState()
+  const [promiseState] = React.useState({});
+  const [, reRender] = React.useState();
 
-    function notify() {
-        reRender(new Object())
+  function notify() {
+    reRender(new Object());
+  }
+
+  function onStart() {
+    if (!promiseState.promise) {
+      resolvePromise(getIMDB100(), promiseState, notify);
     }
+    return;
+  }
 
-    function onStart() {
-        if (!promiseState.promise) {
-            resolvePromise(getIMDB100(), promiseState, notify)
-        }
-        return 
-    }
+  function renderPage() {
+    const data = promiseState.data;
+    return (
+      <div>
+        <Stack direction="column">
+          <div>Header</div>
+          <ItemList listData={data} />
+          <Pagination count={3} />
+        </Stack>
+      </div>
+    );
+  }
 
-    function renderPage() {
-        const data = promiseState.data
-        return (
-            <div>
-                <Stack direction='column'>
-                    <div>Header</div>
-                    <ItemList listData={data} />
-                    <Pagination count={3} />
-                </Stack>
-            </div>
-        )
-    }
+  //console.log(data)
 
-    //console.log(data)
-
-    return (<div>{
-        onStart()
-    } {
-            promiseNoData(promiseState) || renderPage()
-
-        }</div>)
-
+  return (
+    <div>
+      {onStart()} {promiseNoData(promiseState) || renderPage()}
+    </div>
+  );
 }
 
-export default Top100
+export default Top100;

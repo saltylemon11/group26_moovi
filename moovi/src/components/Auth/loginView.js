@@ -35,7 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 function LoginView(props) {
-  const { onSubmit } = props
+  const { onSubmit } = props;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +53,6 @@ function LoginView(props) {
         <div className="stars2"></div>
         <div className="stars3"></div>
         <div className="blur-background">
-          
           {/* Log in form start  */}
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -131,4 +130,4 @@ function LoginView(props) {
   );
 }
 
-export default LoginView
+export default LoginView;

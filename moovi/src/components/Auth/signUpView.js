@@ -31,22 +31,19 @@ function Copyright(props) {
 const theme = createTheme();
 
 function SignUpView(props) {
-
-  const { onSubmit } = props
+  const { onSubmit } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget)
+    const data = new FormData(e.currentTarget);
     onSubmit({
-      email: data.get('email'),
-      password: data.get('password')
-    })
-  }
-
+      email: data.get("email"),
+      password: data.get("password"),
+    });
+  };
 
   // pwd should be >= 6 characters
   return (
-
     <div className="auth-wrapper">
       <div className="star-background">
         <div className="stars1"></div>
@@ -117,7 +114,6 @@ function SignUpView(props) {
       </div>
     </div>
   );
-
 }
 
-export default SignUpView
+export default SignUpView;
