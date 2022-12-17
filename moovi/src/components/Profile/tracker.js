@@ -1,20 +1,21 @@
 /* TODO */
 /* This is a Prototype */
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import { DataGrid, GridCellModes } from '@mui/x-data-grid';
+import * as React from "react";
+import PropTypes from "prop-types";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { DataGrid, GridCellModes } from "@mui/x-data-grid";
 
 function EditToolbar(props) {
-  const { selectedCellParams, cellMode, cellModesModel, setCellModesModel } = props;
+  const { selectedCellParams, cellMode, cellModesModel, setCellModesModel } =
+    props;
 
   const handleSaveOrEdit = () => {
     if (!selectedCellParams) {
       return;
     }
     const { id, field } = selectedCellParams;
-    if (cellMode === 'edit') {
+    if (cellMode === "edit") {
       setCellModesModel({
         ...cellModesModel,
         [id]: { ...cellModesModel[id], [field]: { mode: GridCellModes.View } },
@@ -50,7 +51,7 @@ function EditToolbar(props) {
     <Box
       sx={{
         borderBottom: 1,
-        borderColor: 'divider',
+        borderColor: "divider",
         p: 1,
       }}
     >
@@ -60,12 +61,12 @@ function EditToolbar(props) {
         disabled={!selectedCellParams}
         variant="outlined"
       >
-        {cellMode === 'edit' ? 'Save' : 'Edit'}
+        {cellMode === "edit" ? "Save" : "Edit"}
       </Button>
       <Button
         onClick={handleCancel}
         onMouseDown={handleMouseDown}
-        disabled={cellMode === 'view'}
+        disabled={cellMode === "view"}
         variant="outlined"
         sx={{ ml: 1 }}
       >
@@ -76,7 +77,7 @@ function EditToolbar(props) {
 }
 
 EditToolbar.propTypes = {
-  cellMode: PropTypes.oneOf(['edit', 'view']).isRequired,
+  cellMode: PropTypes.oneOf(["edit", "view"]).isRequired,
   cellModesModel: PropTypes.object.isRequired,
   selectedCellParams: PropTypes.shape({
     field: PropTypes.string.isRequired,
@@ -98,24 +99,24 @@ export default function StartEditButtonGrid() {
 
   const cellMode = React.useMemo(() => {
     if (!selectedCellParams) {
-      return 'view';
+      return "view";
     }
     const { id, field } = selectedCellParams;
-    return cellModesModel[id]?.[field]?.mode || 'view';
+    return cellModesModel[id]?.[field]?.mode || "view";
   }, [cellModesModel, selectedCellParams]);
 
   const handleCellKeyDown = React.useCallback(
     (params, event) => {
-      if (cellMode === 'edit') {
+      if (cellMode === "edit") {
         // Prevents calling event.preventDefault() if Tab is pressed on a cell in edit mode
         event.defaultMuiPrevented = true;
       }
     },
-    [cellMode],
+    [cellMode]
   );
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -144,19 +145,25 @@ export default function StartEditButtonGrid() {
 }
 
 const columns = [
-  { field: 'name', headerName: '', width: 0, editable: false },
-  { field: 'age', headerName: 'Title', width: 150, type: 'string', editable: false },
+  { field: "name", headerName: "", width: 0, editable: false },
   {
-    field: 'dateCreated',
-    headerName: 'Season',
-    type: 'number',
+    field: "age",
+    headerName: "Title",
+    width: 150,
+    type: "string",
+    editable: false,
+  },
+  {
+    field: "dateCreated",
+    headerName: "Season",
+    type: "number",
     width: 180,
     editable: true,
   },
   {
-    field: 'lastLogin',
-    headerName: 'Episode',
-    type: 'number',
+    field: "lastLogin",
+    headerName: "Episode",
+    type: "number",
     width: 220,
     editable: true,
   },
@@ -165,36 +172,36 @@ const columns = [
 const rows = [
   {
     id: 1,
-    name: '',
-    age: 'Rick and Morty',
+    name: "",
+    age: "Rick and Morty",
     dateCreated: 3,
     lastLogin: 2,
   },
   {
     id: 2,
-    name: '',
-    age: 'Game of Thrones',
+    name: "",
+    age: "Game of Thrones",
     dateCreated: 8,
     lastLogin: 1,
   },
   {
     id: 3,
-    name: '',
-    age: 'Breaking Bad',
+    name: "",
+    age: "Breaking Bad",
     dateCreated: 1,
     lastLogin: 2,
   },
   {
     id: 4,
-    name: '',
-    age: 'Stranger Things',
+    name: "",
+    age: "Stranger Things",
     dateCreated: 5,
     lastLogin: 4,
   },
   {
     id: 5,
-    name: '',
-    age: 'The Office',
+    name: "",
+    age: "The Office",
     dateCreated: 1,
     lastLogin: 1,
   },
