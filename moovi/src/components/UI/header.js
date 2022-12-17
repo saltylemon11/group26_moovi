@@ -1,70 +1,75 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { styled, alpha } from '@mui/material/styles';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import SearchIcon from '@mui/icons-material/Search';
-import InputBase from '@mui/material/InputBase';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import { deepPurple } from '@mui/material/colors';
+import * as React from "react";
+import PropTypes from "prop-types";
+import { styled, alpha } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import { deepPurple } from "@mui/material/colors";
 
 function Header(props) {
   const { sections, logo, title } = props;
   //const sections = [{title: 'test', url: ''}]
   //const title = props.title
 
-  const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.50),
-    '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.5),
+    "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.75),
     },
     marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
-      width: 'auto',
+      width: "auto",
     },
   }));
 
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
     padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
+    color: "inherit",
+    "& .MuiInputBase-input": {
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '20ch',
-        '&:focus': {
-          width: '20ch',
+      transition: theme.transitions.create("width"),
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        width: "20ch",
+        "&:focus": {
+          width: "20ch",
           border: 10,
-          borderColor: 'grey.500',
+          borderColor: "grey.500",
         },
       },
     },
   }));
 
-
-
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite', mx: 'auto' }}>
+      <Toolbar
+        sx={{
+          borderBottom: 1,
+          borderColor: "divider",
+          backgroundColor: "ghostwhite",
+          mx: "auto",
+        }}
+      >
         <Typography
           component="h2"
           variant="h5"
@@ -73,7 +78,7 @@ function Header(props) {
           noWrap
           sx={{ flex: 1 }}
         >
-          <IconButton href='/home'>
+          <IconButton href="/home">
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
@@ -83,28 +88,34 @@ function Header(props) {
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
+            inputProps={{ "aria-label": "search" }}
           />
         </Search>
-        <IconButton href='/mine'>
-          <Avatar sx={{ bgcolor: deepPurple[500] }} alt='fluffyKitten'>FK</Avatar>
+        <IconButton href="/mine">
+          <Avatar sx={{ bgcolor: deepPurple[500] }} alt="fluffyKitten">
+            FK
+          </Avatar>
         </IconButton>
       </Toolbar>
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto', backgroundColor: 'ghostwhite' }}
+        sx={{
+          justifyContent: "space-between",
+          overflowX: "auto",
+          backgroundColor: "ghostwhite",
+        }}
       >
         <Link
-            color="inherit"
-            noWrap
-            key="Recommendation"
-            variant="body2"
-            href="/recommendation"
-            sx={{ p: 1, flexShrink: 0 }}
-          >
-            Recommendation
-          </Link>
+          color="inherit"
+          noWrap
+          key="Recommendation"
+          variant="body2"
+          href="/recommendation"
+          sx={{ p: 1, flexShrink: 0 }}
+        >
+          Recommendation
+        </Link>
         {sections.map((section) => (
           <Link
             color="inherit"
@@ -127,7 +138,7 @@ Header.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-    }),
+    })
   ).isRequired,
   title: PropTypes.string.isRequired,
 };
