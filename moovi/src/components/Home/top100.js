@@ -6,6 +6,7 @@ import { getIMDB100 } from "../../services/utils";
 import { Stack } from "@mui/material";
 import resolvePromise from "../../services/resolvePromise";
 import promiseNoData from "../../services/promiseNoData";
+import "../../App.css";
 
 function Top100() {
   const [promiseState] = React.useState({});
@@ -38,7 +39,7 @@ function Top100() {
   //console.log(data)
 
   return (
-    <div>
+    <div className="blur-background">
       {onStart()} {promiseNoData(promiseState) || renderPage()}
     </div>
   );

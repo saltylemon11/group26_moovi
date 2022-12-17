@@ -8,7 +8,6 @@ import Profile from "./components/Profile/profilePresenter";
 import ErrorPage from "./shared/errorpage";
 //import { LibraryTab } from '../components/Profile/collection';
 //import ToWatch from '../components/Profile/towatch';
-//import LandingPagePresenter from '..'
 import LandingPagePresenter from "./components/LandingPage/LandingPagePresenter";
 import Top100 from "./components/Home/top100";
 
