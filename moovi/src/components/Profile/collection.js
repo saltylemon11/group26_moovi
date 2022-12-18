@@ -82,7 +82,7 @@ function ItemUI(props) {
     };
 
     const handleChipClick = () => {
-        console.info('You clicked a chip.')
+        //console.info('You clicked a chip.')
     }
 
     // https://mui.com/material-ui/react-grid/

@@ -13,6 +13,8 @@ import { deepPurple } from '@mui/material/colors';
 import { useAuthValue } from '../authContext';
 import { signOut } from 'firebase/auth'
 import { auth } from '../services/firebase';
+import { Navigate } from 'react-router-dom'
+import { Icon } from '@mui/material';
 
 function Header(props) {
   const { sections, logo, title } = props;
@@ -70,8 +72,6 @@ function Header(props) {
     },
   }));
 
-
-
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite', mx: 'auto' }}>
@@ -87,15 +87,24 @@ function Header(props) {
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
+        <Button href='/search'>Search...</Button>
+        {/*
         <Search>
           <SearchIconWrapper>
-            <SearchIcon />
+            <IconButton href='/search'>
+              <SearchIcon />
+              <Typography>Search...</Typography>
+            </IconButton>
           </SearchIconWrapper>
+          
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ 'aria-label': 'search' }}
+            onClick={handleChange}
           />
+  
         </Search>
+      */}
         {currentUser
           ? <div>
             <IconButton href='/profile'>

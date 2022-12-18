@@ -5,7 +5,7 @@ async function apiCall(options) {
         method: options.method,
         headers: {
             'X-RapidAPI-Key': options.apiKey,
-            'X-RapidAPI-Host': options.host
+            'X-RapidAPI-Host': options.apiHost
         }
     }
     try {

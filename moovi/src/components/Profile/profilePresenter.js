@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import ProfileView from "./profileView";
 import { auth } from '../../services/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
+import { librarySlice } from "../../slices/librarySlice";
 
 function Profile() {
     const [currentUser, setCurrentUser] = React.useState(null)

@@ -10,6 +10,7 @@ import ErrorPage from './shared/errorpage';
 //import ToWatch from '../components/Profile/towatch';
 //import LandingPagePresenter from '..'
 import Top100 from './components/Home/top100';
+import Search from './components/Search/searchPresenter'
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: 'top100',
                 element: <Top100 />
+            },
+            {
+                path: 'search',
+                element: <Search />
             }
         ]
     },
