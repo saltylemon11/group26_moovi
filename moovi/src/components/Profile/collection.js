@@ -81,9 +81,9 @@ function ItemUI(props) {
     setOpen(false);
   };
 
-  const handleChipClick = () => {
-    console.info("You clicked a chip.");
-  };
+    const handleChipClick = () => {
+        //console.info('You clicked a chip.')
+    }
 
   // https://mui.com/material-ui/react-grid/
   const Img = styled("img")({

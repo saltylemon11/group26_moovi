@@ -1,48 +1,83 @@
 /* Use API: https://rapidapi.com/rapihub-rapihub-default/api/imdb-top-100-movies/ */
 import React from "react";
-import { ItemList } from "../Profile/collection";
 import Pagination from "@mui/material/Pagination";
-import { getIMDB100 } from "../../services/utils";
+import { optionsIMDB100 } from "../../services/apiConfig";
 import { Stack } from "@mui/material";
-import resolvePromise from "../../services/resolvePromise";
-import promiseNoData from "../../services/promiseNoData";
-import "../../App.css";
+import { List, ListItem, ListItemText, Typography } from '@mui/material'
+import { SearchItemUI } from "../../shared/searchItemUI";
 
 function Top100() {
-  const [promiseState] = React.useState({});
-  const [, reRender] = React.useState();
+    const [data, setData] = React.useState([])
+    const [error, setError] = React.useState('')
+    const [isLoading, setIsLoading] = React.useState(true)
+    const [page, setPage] = React.useState(1)
+    const [count, setCount] = React.useState()
+    const [currentData, setCurrentData] = React.useState([])
 
-  function notify() {
-    reRender(new Object());
-  }
+    const option = optionsIMDB100
+    const perPage = 10
 
-  function onStart() {
-    if (!promiseState.promise) {
-      resolvePromise(getIMDB100(), promiseState, notify);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const op = {
+                method: option.method,
+                headers: {
+                    'X-RapidAPI-Key': option.apiKey,
+                    'X-RapidAPI-Host': option.apiHost
+                }
+            }
+            try {
+                const response = await fetch(option.url, op)
+                const json = await response.json()
+                setData(json)
+            } catch (err) {
+                setError(err)
+                setIsLoading(false)
+            }
+        }
+
+        fetchData()
+    }, [])
+
+    React.useEffect(() => {
+        setCount(Math.ceil(data.length / perPage))
+        setCurrentData(data.slice((page - 1) * perPage, page * perPage))
+        setIsLoading(false)
+    }, [data])
+
+    const handleChange = (e, p) => {
+        setPage(p)
+        setCurrentData(data.slice((p - 1) * perPage, p * perPage))
+        //console.log(currentData)
     }
-    return;
-  }
 
-  function renderPage() {
-    const data = promiseState.data;
-    return (
-      <div>
-        <Stack direction="column">
-          <div>Header</div>
-          <ItemList listData={data} />
-          <Pagination count={3} />
-        </Stack>
-      </div>
-    );
-  }
+    if (isLoading) return <div>Loading...</div>
 
-  //console.log(data)
-
-  return (
-    <div className="blur-background">
-      {onStart()} {promiseNoData(promiseState) || renderPage()}
-    </div>
-  );
+    return !isLoading && (data ?
+        < div >
+            <Stack direction='column'>
+                <List>
+                    {currentData.map((item, index) => {
+                        const { rank, thumbnail, title, year, genre } = item
+                        return <SearchItemUI
+                            id={rank}
+                            title={title}
+                            image={{ id: thumbnail }}
+                            titleType={genre}
+                            year={year}
+                        />
+                    })}
+                </List>
+                <Pagination
+                    count={count}
+                    page={page}
+                    onChange={handleChange}
+                />
+            </Stack>
+        </div > :
+        <div>{error}</div>
+    )
 }
 
 export default Top100;
