@@ -17,13 +17,13 @@ import TVshows from "./components/Home/TVshows";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <LandingPagePresenter />,
+  },
+  {
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "/",
-        element: <LandingPagePresenter />,
-      },
       {
         path: "home",
         element: <Home />,

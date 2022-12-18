@@ -28,7 +28,7 @@ function Login() {
   React.useEffect(() => {
     if (isSuccess) {
       dispatch(clearState());
-      navigate("home");
+      navigate("/home");
     }
     if (isError) {
       console.log(errorMessage);
