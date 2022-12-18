@@ -5,6 +5,7 @@ import { optionsIMDB100 } from "../../services/apiConfig";
 import { Stack } from "@mui/material";
 import { List, ListItem, ListItemText, Typography } from '@mui/material'
 import { SearchItemUI } from "../../shared/searchItemUI";
+import "../../App.css";
 
 function Top100() {
     const [data, setData] = React.useState([])
@@ -55,7 +56,7 @@ function Top100() {
     if (isLoading) return <div>Loading...</div>
 
     return !isLoading && (data ?
-        < div >
+        < div className="blur-background">
             <Stack direction='column'>
                 <List>
                     {currentData.map((item, index) => {

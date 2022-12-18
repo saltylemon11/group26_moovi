@@ -9,33 +9,33 @@ import ErrorPage from "./shared/errorpage";
 //import { LibraryTab } from '../components/Profile/collection';
 //import ToWatch from '../components/Profile/towatch';
 import LandingPagePresenter from "./components/LandingPage/LandingPagePresenter";
-import Top100 from './components/Home/top100';
+import Top100 from "./components/Home/top100";
 import MovieView from "./components/Home/movieView";
 import TVshows from "./components/Home/TVshows";
-import Search from './components/Search/searchPresenter'
+import Search from "./components/Search/searchPresenter";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPagePresenter />,
   },
-    {
-        path: '/',
-        element: <App />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: 'home',
-                element: <Home />,
-            },
-            {
-                path: 'profile',
-                element: <Profile />,
-            },
-            {
-                path: 'top100',
-                element: <Top100 />
-            },
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "top100",
+        element: <Top100 />,
+      },
       {
         path: "movies",
         element: <MovieView />,
@@ -44,20 +44,20 @@ const router = createBrowserRouter([
         path: "shows",
         element: <TVshows />,
       },
-            {
-                path: 'search',
-                element: <Search />
-            }
-        ]
-    },
-    {
-        path: 'signup',
-        element: <SignUp />
-    },
-    {
-        path: 'login',
-        element: <Login />
-    }
-])
+      {
+        path: "search",
+        element: <Search />,
+      },
+    ],
+  },
+  {
+    path: "signup",
+    element: <SignUp />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+]);
 
 export default router;
