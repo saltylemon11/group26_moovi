@@ -15,6 +15,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../services/firebase';
 import { Navigate } from 'react-router-dom'
 import { Icon } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Header(props) {
   const { sections, logo, title } = props;
