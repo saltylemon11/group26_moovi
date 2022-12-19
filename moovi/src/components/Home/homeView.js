@@ -18,7 +18,7 @@ const sidebar = {
 
 function HomeView() {
   return (
-    <div className="StarBackground">
+    <div className="star-background">
       <div>
         <Grid container spacing={5} sx={{ mt: 3 }} className="blur-background">
           <MainView />

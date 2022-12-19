@@ -21,6 +21,11 @@ import "../../App.css";
 
 // for test
 const avatar = "https://placekitten.com/100/100";
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function ProfileView(props) {
   //const { username, avatar } = props;
@@ -33,73 +38,75 @@ function ProfileView(props) {
   };
 
   return (
-    <div>
-      <Box className="blur-background">
-        <Stack direction="row">
-          <img src={avatar} alt={email} className="profile-pic" />
-          <Typography variant="h3" gutterBottom>
-            {email}
-          </Typography>
-        </Stack>
-        <Divider />
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          {/* TODO: Use Router */}
-          <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <TabList
-                onChange={handleChange}
-                aria-label="lab API tabs example"
-              >
-                <Tab label="Main Page" value="1" />
-                <Tab label="Library" value="2" />
-                <Tab label="My Lists" value="3" />
-                {/* <Tab label='Friends' value='8' /> */}
-                <Tab label="|" disabled />
-                <Tab label="To Watch" value="4" />
-                <Tab label="In Progress" value="5" />
-                <Tab label="Watched" value="6" />
-                <Tab label="|" disabled />
-                <Tab label="Settings" value="7" />
-              </TabList>
-            </Box>
-            <TabPanel value="1">
-              <Stack direction="column">
-                <Typography variant="h4" gutterBottom>
-                  Series Tracker
-                </Typography>
-                <Tracker />
-                {/* <ListTimeline /> */}
-              </Stack>
-            </TabPanel>
-            <TabPanel value="2">
-              <LibraryTab />
-            </TabPanel>
-            <TabPanel value="3">
-              <ListCommon />
-            </TabPanel>
-            <TabPanel value="4">
-              <ToWatch />
-            </TabPanel>
-            <TabPanel value="5">
-              <InProgress />
-            </TabPanel>
-            <TabPanel value="6">
-              <Watched />
-            </TabPanel>
-            <TabPanel value="7">
-              <SettingsView />
-            </TabPanel>
-            {/*
+      <ThemeProvider theme={darkTheme}>
+      <div>
+        <Box className="blur-background">
+          <Stack direction="row">
+            <img src={avatar} alt={email} className="profile-pic" />
+            <Typography variant="h3" gutterBottom>
+              {email}
+            </Typography>
+          </Stack>
+          <Divider />
+          <Box sx={{ width: "100%", typography: "body1" }}>
+            {/* TODO: Use Router */}
+            <TabContext value={value}>
+              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                >
+                  <Tab label="Main Page" value="1" />
+                  <Tab label="Library" value="2" />
+                  <Tab label="My Lists" value="3" />
+                  {/* <Tab label='Friends' value='8' /> */}
+                  <Tab label="|" disabled />
+                  <Tab label="To Watch" value="4" />
+                  <Tab label="In Progress" value="5" />
+                  <Tab label="Watched" value="6" />
+                  <Tab label="|" disabled />
+                  <Tab label="Settings" value="7" />
+                </TabList>
+              </Box>
+              <TabPanel value="1">
+                <Stack direction="column">
+                  <Typography variant="h4" gutterBottom>
+                    Series Tracker
+                  </Typography>
+                  <Tracker />
+                  {/* <ListTimeline /> */}
+                </Stack>
+              </TabPanel>
+              <TabPanel value="2">
+                <LibraryTab />
+              </TabPanel>
+              <TabPanel value="3">
+                <ListCommon />
+              </TabPanel>
+              <TabPanel value="4">
+                <ToWatch />
+              </TabPanel>
+              <TabPanel value="5">
+                <InProgress />
+              </TabPanel>
+              <TabPanel value="6">
+                <Watched />
+              </TabPanel>
+              <TabPanel value="7">
+                <SettingsView />
+              </TabPanel>
+              {/*
                         <TabPanel value='8'>
                             <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
                                 TODO: Friends List Here
                             </Box>
                         </TabPanel>
                         */}
-          </TabContext>
+            </TabContext>
+          </Box>
         </Box>
-      </Box>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
