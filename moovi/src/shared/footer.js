@@ -46,7 +46,7 @@ function StickyFooter() {
       >
         <Container maxWidth="sm">
           <Typography variant="body1">
-            This is a footer.
+            {/* This is a footer. */}
           </Typography>
           <Copyright />
         </Container>

@@ -39,7 +39,7 @@ function SlideTrending(props) {
       md={8}
       spacing={2}
     >
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Typography variant="h6" gutterBottom>
           {title}
         </Typography>
@@ -74,38 +74,6 @@ function Slide(props) {
   function handleChange(event, newValue) {
     setValue(newValue)
   }
-
-  {/* return 
-  (
-    <Grid
-      item
-      xs={12}
-      md={8}
-      spacing={2}
-    >
-      <Box>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite' }}>
-      <Typography variant="h6" gutterBottom>
-        {title}
-      </Typography>
-      <TabContext value={value}>
-        <Box sx={{ borderColor: 'divider'}}>
-        <TabList onChange={handleChange}>
-          <Tab label='genre1' />
-          <Tab label='genre2' />
-          <Tab label='genre3' />
-        </TabList>
-        </Box>
-        <TabPanel value="1">Item One</TabPanel>
-  <TabPanel value="2">Item Two</TabPanel>
-  <TabPanel value="3">Item Three</TabPanel>
-      </TabContext>
-      </Toolbar>
-      </Box>
-    </Grid>
-  );
-  */}
-
   return (<Box sx={{ width: '100%', typography: 'body1' }}>
     <Typography variant="h6" gutterBottom textAlign='left'>
       {title}
@@ -134,7 +102,6 @@ function Slide(props) {
     </TabContext>
   </Box>
   );
-
 }
 
 function SlideTab(props) {

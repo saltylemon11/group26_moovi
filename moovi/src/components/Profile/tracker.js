@@ -85,7 +85,7 @@ EditToolbar.propTypes = {
   setCellModesModel: PropTypes.func.isRequired,
 };
 
-export default function StartEditButtonGrid() {
+export default function StartEditButtonGrid(props) {
   const [selectedCellParams, setSelectedCellParams] = React.useState(null);
   const [cellModesModel, setCellModesModel] = React.useState({});
 
@@ -113,6 +113,9 @@ export default function StartEditButtonGrid() {
     },
     [cellMode],
   );
+
+  const { data } = props
+  const rows = data.map(i=>{return {id: i.movieId, thumbnail: '', title: i.title, season: i.season, episode: i.episode}})
 
   return (
     <div style={{ height: 400, width: '100%' }}>
@@ -144,17 +147,17 @@ export default function StartEditButtonGrid() {
 }
 
 const columns = [
-  { field: 'name', headerName: '', width: 0, editable: false },
-  { field: 'age', headerName: 'Title', width: 150, type: 'string', editable: false },
+  { field: 'thumbnail', headerName: '', width: 0, editable: false },
+  { field: 'title', headerName: 'Title', width: 150, type: 'string', editable: false },
   {
-    field: 'dateCreated',
+    field: 'season',
     headerName: 'Season',
     type: 'number',
     width: 180,
     editable: true,
   },
   {
-    field: 'lastLogin',
+    field: 'episode',
     headerName: 'Episode',
     type: 'number',
     width: 220,
@@ -162,40 +165,42 @@ const columns = [
   },
 ];
 
+/*
 const rows = [
   {
     id: 1,
-    name: '',
-    age: 'Rick and Morty',
-    dateCreated: 3,
-    lastLogin: 2,
+    thumbnail: '',
+    title: 'Rick and Morty',
+    season: 3,
+    episode: 2,
   },
   {
     id: 2,
-    name: '',
-    age: 'Game of Thrones',
-    dateCreated: 8,
-    lastLogin: 1,
+    thumbnail: '',
+    title: 'Game of Thrones',
+    season: 8,
+    episode: 1,
   },
   {
     id: 3,
-    name: '',
-    age: 'Breaking Bad',
-    dateCreated: 1,
-    lastLogin: 2,
+    thumbnail: '',
+    title: 'Breaking Bad',
+    season: 1,
+    episode: 2,
   },
   {
     id: 4,
-    name: '',
-    age: 'Stranger Things',
-    dateCreated: 5,
-    lastLogin: 4,
+    thumbnail: '',
+    title: 'Stranger Things',
+    season: 5,
+    episode: 4,
   },
   {
     id: 5,
-    name: '',
-    age: 'The Office',
-    dateCreated: 1,
-    lastLogin: 1,
+    thumbnail: '',
+    title: 'The Office',
+    season: 1,
+    episode: 1,
   },
 ];
+*/

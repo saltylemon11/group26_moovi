@@ -6,10 +6,12 @@ import { Button, Radio, RadioGroup } from '@mui/material'
 import { FormControl, FormLabel, FormControlLabel } from '@mui/material'
 import { Link } from '@mui/material'
 // redux components
-import { librarySelector, clearState } from "../slices/librarySlice";
+import { recordSelector, clearState } from "../slices/recordSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { setRecord, deleteRecord } from "../services/library";
+import { setRecord, deleteRecord } from "../services/record";
+import { useAuthValue } from '../authContext';
 import moment from 'moment'
+
 
 // search result item UI
 const SearchItemUI = (props) => {
@@ -19,15 +21,20 @@ const SearchItemUI = (props) => {
     const [value, setValue] = React.useState('')
 
     const dispatch = useDispatch()
-    const { isFetching, isSuccess, isError, errorMessage } = useSelector(librarySelector)
+    const { isFetching, isSuccess, isError, errorMessage } = useSelector(recordSelector)
+
+    const { currentUser } = useAuthValue()
+
+    //console.log(currentUser.email)
 
     React.useEffect(()=>{
         if (isSuccess) {
-            //dispatch(clearState())
+            dispatch(clearState())
         }
         if (isError) {
+            // TODO: errmsg snackbar
             console.log(errorMessage)
-            //dispatch(clearState())
+            dispatch(clearState())
         }
     }, [isSuccess, isError])
 
@@ -43,12 +50,17 @@ const SearchItemUI = (props) => {
         setOpen(false)
         // id is sth. like '/tt/title12345/'
         dispatch(setRecord({
+            email: currentUser.email,
             movieId: id.split('/')[2],
+            thumbnail: image.url,
+            title: title,
             status: value,
-            rating: '',
-            comment: '',
+            rating: "0.0", // default
+            comment: "",
             date: moment().format("YYYY-MM-DD"),
-            isPrivate: false
+            isPrivate: false,
+            season: "1", // default
+            episode: "1" // default
         }))
     }
 
@@ -84,7 +96,9 @@ const SearchItemUI = (props) => {
                             </Grid>
                             <Grid item>
                                 <Typography sx={{ cursor: 'pointer' }} variant='body2'>
-                                    <Link onClick={handleClickOpen}>Add to Library</Link>
+                                    {isSuccess
+                                    ?<Link>In my library</Link>
+                                    :<Link onClick={handleClickOpen}>Add to Library</Link>}
                                 </Typography>
                             </Grid>
                         </Grid>

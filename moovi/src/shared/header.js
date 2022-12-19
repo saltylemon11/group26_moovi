@@ -18,11 +18,7 @@ import { Icon } from '@mui/material';
 
 function Header(props) {
   const { sections, logo, title } = props;
-  //const sections = [{title: 'test', url: ''}]
-  //const title = props.title
-  //console.log('header', useAuthValue())
   const { currentUser } = useAuthValue()
-  //console.log('header',currentUser)
 
   const Logout = async () => {
     await signOut(auth);
@@ -31,10 +27,12 @@ function Header(props) {
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
+    /*
     backgroundColor: alpha(theme.palette.common.white, 0.50),
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.75),
     },
+    */
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -74,7 +72,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'ghostwhite', mx: 'auto' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', mx: 'auto' }}>
         <Typography
           component="h2"
           variant="h5"
@@ -87,24 +85,7 @@ function Header(props) {
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
-        <Button href='/search'>Search...</Button>
-        {/*
-        <Search>
-          <SearchIconWrapper>
-            <IconButton href='/search'>
-              <SearchIcon />
-              <Typography>Search...</Typography>
-            </IconButton>
-          </SearchIconWrapper>
-          
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            onClick={handleChange}
-          />
-  
-        </Search>
-      */}
+        <Button variant='outlined' href='/search'>Search...</Button>
         {currentUser
           ? <div>
             <IconButton href='/profile'>
@@ -121,7 +102,7 @@ function Header(props) {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto', backgroundColor: 'ghostwhite' }}
+        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
         {sections.map((section) => (
           <Link

@@ -2,13 +2,12 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Home from './components/Home/homePresenter'
+import Movies from './components/Movies/moviesPresenter'
+import Shows from './components/Shows/showsPresenter';
 import SignUp from './components/Auth/signUpPresenter';
 import Login from './components/Auth/loginPresenter'
 import Profile from './components/Profile/profilePresenter';
 import ErrorPage from './shared/errorpage';
-//import { LibraryTab } from '../components/Profile/collection';
-//import ToWatch from '../components/Profile/towatch';
-//import LandingPagePresenter from '..'
 import Top100 from './components/Home/top100';
 import Search from './components/Search/searchPresenter'
 
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />,
+                element: <Shows />,
             },
             {
                 path: 'profile',

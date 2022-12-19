@@ -2,8 +2,8 @@
 import React from "react";
 import Pagination from "@mui/material/Pagination";
 import { optionsIMDB100 } from "../../services/apiConfig";
-import { Stack } from "@mui/material";
-import { List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Stack, Container, Box, Divider } from "@mui/material";
+import { List } from '@mui/material'
 import { SearchItemUI } from "../../shared/searchItemUI";
 
 function Top100() {
@@ -56,25 +56,36 @@ function Top100() {
 
     return !isLoading && (data ?
         < div >
-            <Stack direction='column'>
-                <List>
-                    {currentData.map((item, index) => {
-                        const { rank, thumbnail, title, year, genre } = item
-                        return <SearchItemUI
-                            id={rank}
-                            title={title}
-                            image={{ id: thumbnail }}
-                            titleType={genre}
-                            year={year}
+            <Container maxWidth="lg" >
+                <Box>
+                    <Stack direction='column'
+                        divider={<Divider orientation="vertical" flexItem />}
+                        spacing={5}>
+                        <List>
+                            {currentData.map((item, index) => {
+                                const { imdbid, image, title, year, genre } = item
+                                return (
+                                    <div>
+                                        <SearchItemUI
+                                            id={'/tt/'+imdbid+'/'}
+                                            title={title}
+                                            image={{url: image}}
+                                            titleType={genre}
+                                            year={year}
+                                        />
+                                        <Divider />
+                                    </div>
+                                )
+                            })}
+                        </List>
+                        <Pagination
+                            count={count}
+                            page={page}
+                            onChange={handleChange}
                         />
-                    })}
-                </List>
-                <Pagination
-                    count={count}
-                    page={page}
-                    onChange={handleChange}
-                />
-            </Stack>
+                    </Stack>
+                </Box>
+            </Container>
         </div > :
         <div>{error}</div>
     )

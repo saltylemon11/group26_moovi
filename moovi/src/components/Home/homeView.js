@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 // for test
 const catimg = 'http://placekitten.com/g/200/300'
 const sidebar = {
-    title: 'Trending',
+    title: 'Coming Soon',
     movielist: [
         { title: 'Movie Title 1', img: catimg, url: '#' },
         { title: 'Movie Title 2', img: catimg, url: '#' },

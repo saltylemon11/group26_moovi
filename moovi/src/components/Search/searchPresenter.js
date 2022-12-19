@@ -1,10 +1,8 @@
 import React from "react";
 import { optionsIMDb } from "../../services/apiConfig";
 //import SearchView from "./searchView";
-//
 import { Pagination } from "@mui/material";
-import { Stack } from "@mui/material";
-import { List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Stack, List } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
@@ -12,8 +10,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { SearchItemUI } from "../../shared/searchItemUI";
 
 function Search(props) {
-    //const { q } = props
-    //const [query, setQuery] = React.useState(q)
     const [q, setQ] = React.useState('')
     const [query, setQuery] = React.useState({ q: 'cat' })
     const [data, setData] = React.useState([])

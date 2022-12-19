@@ -1,47 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from './firebase'
-import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore/lite'
+import { collection, getDocs } from 'firebase/firestore/lite'
 
-// mockuser 换成 user 的 email 地址 (string)
-const colRef = "mockuser"
+// user's email
+let colRef
 
-const setRecord = createAsyncThunk(
-    "lib/setRecord",
+// get records of a user by their email
+const getLibrary = createAsyncThunk(
+    "lib/getLibrary",
     async (data, thunkAPI) => {
-        const docRef = doc(db, colRef, data.movieId)
-        const record = {
-            movieId: data.movieId,
-            status: data.status,
-            date: data.date,
-            rating: data.rating,
-            comment: data.comment,
-            isPrivate: data.isPrivate
-        }
-        //console.log(record)
-        await setDoc(docRef, record)
-    }
-)
-
-const getRecord = createAsyncThunk(
-    "lib/getRecord",
-    async (data, thunkAPI) => {
-        const docRef = doc(db, colRef, data.movieId)
-        const response = await getDoc(docRef)
-        if (response.exists()) {
-            return response.data()
-        } else {
-            console.log('No such doucment: ', docRef)
-            return thunkAPI.rejectWithValue(docRef)
+        let colRef = data
+        //console.log('colRef',colRef)
+        const docRef = collection(db, colRef)
+        //const docRef = collection(db, colRef) // a colref actually
+        try {
+            const response = await getDocs(docRef)
+            //return response
+            return response.docs.map((doc) => {return doc.data()})
+        } catch (err) {
+            //console.log(err)
+            return thunkAPI.rejectWithValue(err)
         }
     }
 )
 
-const deleteRecord = createAsyncThunk(
-    "lib/deleteRecord",
-    async (data, thunkAPI) => {
-        const docRef = doc(db, colRef, data.movieId)
-        await deleteDoc(docRef)
-    }
-)
-
-export { setRecord, getRecord, deleteRecord }
+export { getLibrary }

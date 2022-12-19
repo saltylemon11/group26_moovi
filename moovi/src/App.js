@@ -13,8 +13,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // for test
 const sections = [
-  { title: 'Movies', url: '#' },
-  { title: 'TV Shows', url: '#' },
+  //{ title: 'Home', url: '/' },
+  //{ title: 'Movies', url: 'movies' },
+  { title: 'Trending', url: '/' },
   { title: 'IMDb Top 100 Movies', url: 'top100' }
 ]
 //https://mui.com/material-ui/customization/dark-mode/
@@ -27,7 +28,7 @@ const darkTheme = createTheme({
 function App() {
 
   const [currentUser, setCurrentUser] = React.useState(null)
-  
+
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
@@ -36,9 +37,9 @@ function App() {
 
   return (
     <AuthProvider value={{ currentUser }}>
-      {/* <ThemeProvider theme={darkTheme}> */}
+      <ThemeProvider theme={darkTheme}>
       <div className="App">
-        <Container maxWidth='lg'>
+        <Container maxWidth='false'>
           <Header title='Moovi' logo={logo} sections={sections} />
           <Grid container spacing={0}>
           </Grid>
@@ -46,7 +47,7 @@ function App() {
         </Container>
         <StickyFooter />
       </div>
-      {/* </ThemeProvider> */}
+      </ThemeProvider>
     </AuthProvider>
   );
 }
