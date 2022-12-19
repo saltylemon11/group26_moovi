@@ -28,14 +28,6 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme(
-  { red: {
-    main: '#7C0A02',
-    contrastText: '#fff',
-  }
-  }
-    );
-
 function SignUpView(props) {
   const { onSubmit } = props;
 
@@ -97,7 +89,6 @@ function SignUpView(props) {
                     autoComplete="new-password"
                   />
                 </Grid>
-                <ThemeProvider theme={theme}>
                 <Button
                   type="submit"
                   fullWidth
@@ -107,7 +98,6 @@ function SignUpView(props) {
                 >
                   Sign Up
                 </Button>
-                </ThemeProvider>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                     <Link href="/login" variant="body2">
