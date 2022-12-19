@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
-import Sidebar from '../Home/sidebar'
+import SearchSidebar from './searchSidebar';
 import Search from './Search';
 
 const catimg = 'http://placekitten.com/g/200/300'
@@ -21,7 +21,7 @@ function SearchPage() {
         <div>
             <Grid container spacing={5} sx={{ mt: 3 }}>
                 <Search />
-                <Sidebar title={sidebar.title} movielist={sidebar.movielist} />
+                <SearchSidebar title={sidebar.title} movielist={sidebar.movielist} />
             </Grid>
         </div>
     )
