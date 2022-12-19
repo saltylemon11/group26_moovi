@@ -26,7 +26,7 @@ function SignUp() {
   React.useEffect(() => {
     if (isSuccess) {
       dispatch(clearState());
-      navigate("/home");
+      navigate("/");
     }
     if (isError) {
       console.log(errorMessage);
