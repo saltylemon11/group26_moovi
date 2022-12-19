@@ -8,7 +8,7 @@ const theme = createTheme();
 function Search(props){
     return (
         <ThemeProvider theme={theme}>
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
         <Button
             loading              
