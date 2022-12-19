@@ -70,6 +70,18 @@ function Header(props) {
     },
   }));
 
+  const theme = createTheme(
+    {gray: {
+      main: '#64748B',
+      contrastText: '#fff',
+      },
+      red: {
+        main: '#7C0A02',
+        contrastText: '#fff',
+      }
+    }
+      );
+
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', mx: 'auto' }}>
@@ -93,9 +105,16 @@ function Header(props) {
             </IconButton>
             <Button href='/' variant='outlined' onClick={Logout}>Log out</Button>
           </div>
-          : <div>
-            <Button href='/login' variant='contained'>Log in</Button>
-            <Button href='/signup' variant='outlined'>Sign up</Button>
+         : <div>
+            <ThemeProvider theme={theme}>
+            <Button href="/login" variant="contained" color='gray'>
+              Log in
+            </Button>
+            <Button href="/signup" variant="contained" color='red'>
+              Sign up
+            </Button>
+            </ThemeProvider>
+
           </div>
         }
       </Toolbar>
