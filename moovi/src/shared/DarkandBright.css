@@ -1,0 +1,13 @@
+.dark{
+    height:100%;
+    background: radial-gradient(
+        ellipse at bottom,
+        #404040,
+        #181818
+    )
+}
+.light{
+    height:100%;
+    overflow: auto;
+
+}
