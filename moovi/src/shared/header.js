@@ -1,20 +1,32 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import { styled, alpha } from "@mui/material/styles";
-import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import { deepPurple } from "@mui/material/colors";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { styled, alpha } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import { deepPurple } from '@mui/material/colors';
+import { useAuthValue } from '../authContext';
+import { signOut } from 'firebase/auth'
+import { auth } from '../services/firebase';
+import { Navigate } from 'react-router-dom'
+import { Icon } from '@mui/material';
 
 function Header(props) {
   const { sections, logo, title } = props;
   //const sections = [{title: 'test', url: ''}]
   //const title = props.title
+  //console.log('header', useAuthValue())
+  const { currentUser } = useAuthValue();
+  //console.log('header',currentUser)
+
+  const Logout = async () => {
+    await signOut(auth);
+  };
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -82,20 +94,43 @@ function Header(props) {
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
+        <Button href='/search'>Search...</Button>
+        {/*
         <Search>
           <SearchIconWrapper>
-            <SearchIcon />
+            <IconButton href='/search'>
+              <SearchIcon />
+              <Typography>Search...</Typography>
+            </IconButton>
           </SearchIconWrapper>
+          
           <StyledInputBase
             placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
+            inputProps={{ 'aria-label': 'search' }}
+            onClick={handleChange}
           />
+  
         </Search>
-        <IconButton href="/mine">
-          <Avatar sx={{ bgcolor: deepPurple[500] }} alt="fluffyKitten">
-            FK
-          </Avatar>
-        </IconButton>
+      */}
+        {currentUser
+          ? <div>
+            <IconButton href='/profile'>
+              <Avatar sx={{ bgcolor: deepPurple[500] }} alt='userAvatar'>Me</Avatar>
+            </IconButton>
+            <Button href="/" variant="outlined" onClick={Logout}>
+              Log out
+            </Button>
+          </div>
+         : (
+          <div>
+            <Button href="/login" variant="contained">
+              Log in
+            </Button>
+            <Button href="/signup" variant="outlined">
+              Sign up
+            </Button>
+          </div>
+        )}
       </Toolbar>
       <Toolbar
         component="nav"
@@ -106,16 +141,6 @@ function Header(props) {
           backgroundColor: "ghostwhite",
         }}
       >
-        <Link
-          color="inherit"
-          noWrap
-          key="Recommendation"
-          variant="body2"
-          href="/recommendation"
-          sx={{ p: 1, flexShrink: 0 }}
-        >
-          Recommendation
-        </Link>
         {sections.map((section) => (
           <Link
             color="inherit"

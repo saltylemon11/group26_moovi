@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "",
+    "title": "Comments",
+    "description": "Data structure of comments",
+    "type": "object",
+    "properties": {
+        "commentId": {
+            "type": "string"
+        },
+        "userId": {
+            "type": "string"
+        },
+        "movieId": {
+            "type": "string"
+        },
+        "content": {
+            "type": "string"
+        },
+        "rating": {
+            "type": "number"
+        },
+        "commentTime": {
+            "type": "string",
+            "format": "date"
+        }
+    }
+}
