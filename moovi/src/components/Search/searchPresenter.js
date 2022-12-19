@@ -89,7 +89,7 @@ function Search(props) {
                 >
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
-                        placeholder="Search movies"
+                        placeholder="Search movies (Click the search icon to search)"
                         inputProps={{ 'aria-label': 'search movies' }}
                         onChange={handleQueryChange}
                     />

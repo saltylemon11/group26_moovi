@@ -16,7 +16,8 @@ const sections = [
   //{ title: 'Home', url: '/' },
   //{ title: 'Movies', url: 'movies' },
   { title: 'Trending', url: '/' },
-  { title: 'IMDb Top 100 Movies', url: 'top100' }
+  { title: 'IMDb Top 100 Movies', url: 'top100' },
+  { title: 'My Profile', url: 'profile'}
 ]
 //https://mui.com/material-ui/customization/dark-mode/
 const darkTheme = createTheme({
