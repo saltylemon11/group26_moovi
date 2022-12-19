@@ -72,6 +72,18 @@ function Header(props) {
     },
   }));
 
+  const theme = createTheme(
+    {gray: {
+      main: '#64748B',
+      contrastText: '#fff',
+      },
+      red: {
+        main: '#7C0A02',
+        contrastText: '#fff',
+      }
+    }
+      );
+
   return (
     <React.Fragment>
       <Toolbar
@@ -122,13 +134,14 @@ function Header(props) {
             </Button>
           </div>
          : (
-          <div>
-            <Button href="/login" variant="contained">
+          <div><ThemeProvider theme={theme}>
+            <Button href="/login" variant="contained" color='gray'>
               Log in
             </Button>
-            <Button href="/signup" variant="outlined">
+            <Button href="/signup" variant="contained" color='red'>
               Sign up
             </Button>
+            </ThemeProvider>
           </div>
         )}
       </Toolbar>

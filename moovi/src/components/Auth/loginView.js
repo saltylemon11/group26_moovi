@@ -32,7 +32,13 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme(
+  {gray: {
+    main: '#64748B',
+    contrastText: '#fff',
+    },
+  }
+    );
 
 function LoginView(props) {
   const { onSubmit } = props;
@@ -47,6 +53,7 @@ function LoginView(props) {
   };
 
   return (
+  <ThemeProvider theme={theme}>
     <div className="auth-wrapper">
       <div className="star-background">
         <div className="stars1"></div>
@@ -103,6 +110,7 @@ function LoginView(props) {
                 <Button
                   type="submit"
                   fullWidth
+                  color="gray"
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
@@ -129,6 +137,9 @@ function LoginView(props) {
         </div>
       </div>
     </div>
+    </ThemeProvider>
+
+    
   );
 }
 
