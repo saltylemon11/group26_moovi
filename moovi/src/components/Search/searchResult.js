@@ -17,3 +17,4 @@ function SearchResult(props){
     </ThemeProvider>
     )
 }
+export default SearchResult
