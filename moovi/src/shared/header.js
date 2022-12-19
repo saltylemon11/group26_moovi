@@ -15,7 +15,6 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../services/firebase';
 import { Navigate } from 'react-router-dom'
 import { Icon } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Header(props) {
   const { sections, logo, title } = props;
@@ -71,18 +70,6 @@ function Header(props) {
     },
   }));
 
-  const theme = createTheme(
-    {gray: {
-      main: '#64748B',
-      contrastText: '#fff',
-      },
-      red: {
-        main: '#7C0A02',
-        contrastText: '#fff',
-      }
-    }
-      );
-
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', mx: 'auto' }}>
@@ -106,16 +93,9 @@ function Header(props) {
             </IconButton>
             <Button href='/' variant='outlined' onClick={Logout}>Log out</Button>
           </div>
-         : <div>
-            <ThemeProvider theme={theme}>
-            <Button href="/login" variant="contained" color='gray'>
-              Log in
-            </Button>
-            <Button href="/signup" variant="contained" color='red'>
-              Sign up
-            </Button>
-            </ThemeProvider>
-
+          : <div>
+            <Button href='/login' variant='contained'>Log in</Button>
+            <Button href='/signup' variant='outlined'>Sign up</Button>
           </div>
         }
       </Toolbar>

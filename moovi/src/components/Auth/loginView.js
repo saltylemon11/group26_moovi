@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 import "../../shared/StarBackground.css";
 import "../../App.css";
 
@@ -32,13 +32,7 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme(
-  {gray: {
-    main: '#64748B',
-    contrastText: '#fff',
-    },
-  }
-    );
+const theme = createTheme();
 
 function LoginView(props) {
   const { onSubmit } = props;
@@ -53,7 +47,6 @@ function LoginView(props) {
   };
 
   return (
-  <ThemeProvider theme={theme}>
     <div className="auth-wrapper">
       <div className="star-background">
         <div className="stars1"></div>
@@ -110,13 +103,13 @@ function LoginView(props) {
                 <Button
                   type="submit"
                   fullWidth
-                  color="gray"
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
                   Log In
                 </Button>
-                <p className="dummy-account">Dummy Email / Password <br /> abc@abc.com / 123123 <br /> If you do not wish to register</p>
+                <p className="dummy-account">Dummy Email / Password <br /> abc@abc.com / 123123 <br/> If you do not wish to register</p>
+                
                 <Grid container>
                   <Grid item xs>
                     <Link href="#" variant="body2">
@@ -136,9 +129,6 @@ function LoginView(props) {
         </div>
       </div>
     </div>
-    </ThemeProvider>
-
-    
   );
 }
 

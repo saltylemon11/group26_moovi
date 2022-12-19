@@ -28,28 +28,25 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme(
-  { red: {
-    main: '#7C0A02',
-    contrastText: '#fff',
-  }
-  }
-    );
+const theme = createTheme();
 
 function SignUpView(props) {
-  const { onSubmit } = props;
+
+  const { onSubmit } = props
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const data = new FormData(e.currentTarget)
     onSubmit({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+      email: data.get('email'),
+      password: data.get('password')
+    })
+  }
+
 
   // pwd should be >= 6 characters
   return (
+
     <div className="auth-wrapper">
       <div className="star-background">
         <div className="stars1"></div>
@@ -97,17 +94,15 @@ function SignUpView(props) {
                     autoComplete="new-password"
                   />
                 </Grid>
-                <ThemeProvider theme={theme}>
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
-                  color="red"
                   sx={{ mt: 2, mb: 2 }}
                 >
                   Sign Up
                 </Button>
-                </ThemeProvider>
+                <p>Please open console to check error message</p>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                     <Link href="/login" variant="body2">
@@ -123,6 +118,7 @@ function SignUpView(props) {
       </div>
     </div>
   );
+
 }
 
-export default SignUpView;
+export default SignUpView
