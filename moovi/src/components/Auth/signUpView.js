@@ -93,7 +93,6 @@ function SignUpView(props) {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  color="red"
                   sx={{ mt: 2, mb: 2 }}
                 >
                   Sign Up

@@ -98,10 +98,10 @@ function Header(props) {
             <Button href='/' variant='outlined' onClick={Logout}>Log out</Button>
           </div>
          : <div>
-            <Button href="/login" variant="contained" color='gray'>
+            <Button href="/login" variant="contained">
               Log in
             </Button>
-            <Button href="/signup" variant="outlined" color='red'>
+            <Button href="/signup" variant="outlined">
               Sign up
             </Button>
 
