@@ -105,6 +105,11 @@
   text-align: center;
 }
 
+.dummy-account {
+  text-align: center;
+  color: rgb(59, 44, 44);
+}
+
 /********** Profile **************/
 .profile-pic {
   border-radius: 50%;

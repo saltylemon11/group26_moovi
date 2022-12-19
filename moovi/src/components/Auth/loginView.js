@@ -108,6 +108,8 @@ function LoginView(props) {
                 >
                   Log In
                 </Button>
+                <p className="dummy-account">Dummy Email / Password <br /> abc@abc.com / 123123</p>
+                
                 <Grid container>
                   <Grid item xs>
                     <Link href="#" variant="body2">
