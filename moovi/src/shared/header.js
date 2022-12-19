@@ -18,55 +18,53 @@ import { Icon } from '@mui/material';
 
 function Header(props) {
   const { sections, logo, title } = props;
-  //const sections = [{title: 'test', url: ''}]
-  //const title = props.title
-  //console.log('header', useAuthValue())
-  const { currentUser } = useAuthValue();
-  //console.log('header',currentUser)
+  const { currentUser } = useAuthValue()
 
   const Logout = async () => {
     await signOut(auth);
-  };
+  }
 
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
+  const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.5),
-    "&:hover": {
+    /*
+    backgroundColor: alpha(theme.palette.common.white, 0.50),
+    '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.75),
     },
+    */
     marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
-      width: "auto",
+      width: 'auto',
     },
   }));
 
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
+  const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
+    color: 'inherit',
+    '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        width: "20ch",
-        "&:focus": {
-          width: "20ch",
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: '20ch',
+        '&:focus': {
+          width: '20ch',
           border: 10,
-          borderColor: "grey.500",
+          borderColor: 'grey.500',
         },
       },
     },
@@ -74,14 +72,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar
-        sx={{
-          borderBottom: 1,
-          borderColor: "divider",
-          backgroundColor: "ghostwhite",
-          mx: "auto",
-        }}
-      >
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', mx: 'auto' }}>
         <Typography
           component="h2"
           variant="h5"
@@ -90,56 +81,28 @@ function Header(props) {
           noWrap
           sx={{ flex: 1 }}
         >
-          <IconButton href="/home">
+          <IconButton href='/'>
             <img src={logo} alt={title} />
           </IconButton>
         </Typography>
-        <Button href='/search'>Search...</Button>
-        {/*
-        <Search>
-          <SearchIconWrapper>
-            <IconButton href='/search'>
-              <SearchIcon />
-              <Typography>Search...</Typography>
-            </IconButton>
-          </SearchIconWrapper>
-          
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            onClick={handleChange}
-          />
-  
-        </Search>
-      */}
+        <Button variant='outlined' href='/search'>Search...</Button>
         {currentUser
           ? <div>
             <IconButton href='/profile'>
               <Avatar sx={{ bgcolor: deepPurple[500] }} alt='userAvatar'>Me</Avatar>
             </IconButton>
-            <Button href="/" variant="outlined" onClick={Logout}>
-              Log out
-            </Button>
+            <Button href='/' variant='outlined' onClick={Logout}>Log out</Button>
           </div>
-         : (
-          <div>
-            <Button href="/login" variant="contained">
-              Log in
-            </Button>
-            <Button href="/signup" variant="outlined">
-              Sign up
-            </Button>
+          : <div>
+            <Button href='/login' variant='contained'>Log in</Button>
+            <Button href='/signup' variant='outlined'>Sign up</Button>
           </div>
-        )}
+        }
       </Toolbar>
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{
-          justifyContent: "space-between",
-          overflowX: "auto",
-          backgroundColor: "ghostwhite",
-        }}
+        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
         {sections.map((section) => (
           <Link
@@ -163,7 +126,7 @@ Header.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
   title: PropTypes.string.isRequired,
 };

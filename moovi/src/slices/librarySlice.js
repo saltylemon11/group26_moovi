@@ -1,15 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setRecord, getRecord, deleteRecord } from "../services/library";
+import { getLibrary } from '../services/library'
 
 const librarySlice = createSlice({
-    // record item
-    name: "record",
+    name: "library",
     initialState: {
-        movieId: "",
-        status: "",
-        rating: "",
-        comment: "",
-        date: "",
+        data: [],
         isFetching: false,
         isSuccess: false,
         isError: false,
@@ -26,22 +21,24 @@ const librarySlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(setRecord.fulfilled, (state, { payload }) => {
-                state.isFetching = false
-                state.isSuccess = true
-            })
-            .addCase(setRecord.pending, (state) => {
-                state.isFetching = true
-            })
-            .addCase(setRecord.rejected, (state, { payload }) => {
-                state.isFetching = false
-                state.isError = true
-                state.errorMessage = payload.message // TODO
-            })
+        .addCase(getLibrary.fulfilled, (state, { payload }) => {
+            state.isFetching = false
+            state.isSuccess = true
+            state.data = payload
+        })
+        .addCase(getLibrary.pending, (state) => {
+            state.isFetching = true
+        })
+        .addCase(getLibrary.rejected, (state, { payload }) => {
+            state.isFetching = false
+            state.isError = true
+            state.errorMessage = payload
+        })
     }
 })
 
-const librarySelector = state => state.user
+const librarySelector = state => state.library
 
 export const { clearState } = librarySlice.actions
+
 export { librarySlice, librarySelector }
