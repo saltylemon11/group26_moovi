@@ -2,12 +2,14 @@ import React from "react";
 import { optionsIMDb } from "../../services/apiConfig";
 //import SearchView from "./searchView";
 import { Pagination } from "@mui/material";
-import { Stack, List } from "@mui/material";
+import { Stack, List, Box } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { SearchItemUI } from "../../shared/searchItemUI";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Search(props) {
     const [q, setQ] = React.useState('')
@@ -19,6 +21,8 @@ function Search(props) {
     const [page, setPage] = React.useState(1)
     const [count, setCount] = React.useState()
     const [currentData, setCurrentData] = React.useState([])
+
+    const [bdOpen, setBdOpen] = React.useState(false)
 
     const option = optionsIMDb
     const perPage = 10
@@ -36,8 +40,9 @@ function Search(props) {
             try {
                 const response = await fetch(option.url + params, op)
                 const json = await response.json()
-                setData(json.results.filter(i=>i.name===undefined))
+                setData(json.results.filter(i => i.name === undefined))
                 setIsLoading(false)
+                setBdOpen(false)
             } catch (err) {
                 setError(err)
                 setIsLoading(false)
@@ -47,7 +52,7 @@ function Search(props) {
     }, [query])
 
     React.useEffect(() => {
-        console.log(data)
+        //console.log(data)
         setCount(Math.ceil(data.length / perPage))
         setCurrentData(data.slice((page - 1) * perPage, page * perPage))
     }, [data])
@@ -62,6 +67,7 @@ function Search(props) {
     }
 
     const handleClick = (e) => {
+        setBdOpen(true)
         setQuery({
             q: q
         })
@@ -98,6 +104,9 @@ function Search(props) {
                     </IconButton>
                 </Paper>
                 <List>
+                    <div>
+                        <Backdrop open={bdOpen}><Box><CircularProgress color='inherit' /></Box></Backdrop>
+                    </div>
                     {currentData.map((item, index) => {
                         const { id, image, title, titleType, year } = item
                         return <SearchItemUI

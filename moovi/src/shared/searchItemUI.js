@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setRecord, deleteRecord } from "../services/record";
 import { useAuthValue } from '../authContext';
 import moment from 'moment'
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
 
 
 // search result item UI
@@ -19,6 +21,7 @@ const SearchItemUI = (props) => {
 
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState('')
+    const [bdOpen, setBdOpen] = React.useState(false)
 
     const dispatch = useDispatch()
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(recordSelector)
@@ -47,6 +50,7 @@ const SearchItemUI = (props) => {
     }
 
     const handleSubmit = () => {
+        setBdOpen(true)
         setOpen(false)
         // id is sth. like '/tt/title12345/'
         dispatch(setRecord({
@@ -122,6 +126,7 @@ const SearchItemUI = (props) => {
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleSubmit}>Done</Button>
+                    <Backdrop open={bdOpen}><CircularProgress color='inherit'/></Backdrop>
                 </DialogActions>
             </Dialog>
         </div>

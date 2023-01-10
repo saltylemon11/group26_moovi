@@ -6,11 +6,14 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function SearchView(props) {
     const { setQuery, data, count, page, setPage, currentData, setCurrentData } = props
     const [q, setQ] = React.useState('')
+    const [bdOpen, setBdOpen] = React.useState(false)
 
     const perPage = 10
 
@@ -24,30 +27,16 @@ function SearchView(props) {
     }
 
     const handleClick = (e) => {
+        setBdOpen(true)
         setQuery({
             q: q
         })
     }
 
-    const films = [
-        { title: 'The Shawshank Redemption', year: 1994 },
-        { title: 'The Godfather', year: 1972 },
-        { title: 'The Godfather: Part II', year: 1974 },
-        { title: 'The Dark Knight', year: 2008 },
-        { title: '12 Angry Men', year: 1957 },
-        { title: "Schindler's List", year: 1993 },
-        { title: 'Pulp Fiction', year: 1994 },
-        {
-            title: 'The Lord of the Rings: The Return of the King',
-            year: 2003,
-        },
-        { title: 'The Good, the Bad and the Ugly', year: 1966 },
-        { title: 'Fight Club', year: 1999 }
-    ]
-
     return (
         <div>
             <Stack direction='column'>
+                <Backdrop open={bdOpen}><CircularProgress color='inherit'/></Backdrop>
                 <Paper
                     component="form"
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}

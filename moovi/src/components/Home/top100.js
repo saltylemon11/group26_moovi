@@ -5,6 +5,8 @@ import { optionsIMDB100 } from "../../services/apiConfig";
 import { Stack, Container, Box, Divider } from "@mui/material";
 import { List } from '@mui/material'
 import { SearchItemUI } from "../../shared/searchItemUI";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Top100() {
     const [data, setData] = React.useState([])
@@ -52,9 +54,14 @@ function Top100() {
         //console.log(currentData)
     }
 
-    if (isLoading) return <div>Loading...</div>
+    if (!data) return (
+        <div>
+            <Backdrop open={true}><Box><CircularProgress color='inherit' /></Box></Backdrop>
+        </div>
+    )
 
-    return !isLoading && (data ?
+    //return !isLoading && (data ?
+    return (
         < div >
             <Container maxWidth="lg" >
                 <Box>
@@ -62,14 +69,18 @@ function Top100() {
                         divider={<Divider orientation="vertical" flexItem />}
                         spacing={5}>
                         <List>
+                            <div>
+                                <Backdrop open={!isLoading} timeout={{ exit: 50 }}><Box><CircularProgress color='inherit' /></Box></Backdrop>
+                            </div>
                             {currentData.map((item, index) => {
                                 const { imdbid, image, title, year, genre } = item
+                                if(!isLoading) setIsLoading(!isLoading)
                                 return (
                                     <div>
                                         <SearchItemUI
-                                            id={'/tt/'+imdbid+'/'}
+                                            id={'/tt/' + imdbid + '/'}
                                             title={title}
-                                            image={{url: image}}
+                                            image={{ url: image }}
                                             titleType={genre}
                                             year={year}
                                         />
@@ -86,8 +97,9 @@ function Top100() {
                     </Stack>
                 </Box>
             </Container>
-        </div > :
-        <div>{error}</div>
+        </div > 
+        //:
+        //<div>{error}</div>
     )
 }
 

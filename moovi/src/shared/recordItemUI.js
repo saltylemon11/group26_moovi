@@ -17,6 +17,9 @@ import { updateRecord, deleteRecord } from "../services/record";
 import { useAuthValue } from '../authContext';
 // moment.js
 import moment from 'moment'
+// progress
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
 
 function RecordItemUI(props) {
     //console.log(props)
@@ -28,6 +31,8 @@ function RecordItemUI(props) {
     const [newComment, setNewComment] = React.useState(comment)
     const [newIsPrivate, setNewIsPrivate] = React.useState(isPrivate)
 
+    const [bdOpen, setBdOpen] = React.useState(false)
+
 
     const dispatch = useDispatch()
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(recordSelector)
@@ -38,6 +43,7 @@ function RecordItemUI(props) {
 
     React.useEffect(() => {
         if (isSuccess) {
+            setOpen(false)
             dispatch(clearState())
             window.parent.location.reload()
         }
@@ -74,7 +80,8 @@ function RecordItemUI(props) {
 
     // const { title, img, comment, date, rating, isPrivate } = props
     const handleSubmit = () => {
-        setOpen(false)
+        //setOpen(false)
+        setBdOpen(true)
         dispatch(updateRecord({
             email: currentUser.email, // readonly
             movieId: movieId, // readonly
@@ -194,6 +201,7 @@ function RecordItemUI(props) {
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleSubmit}>Done</Button>
+                    <Backdrop open={bdOpen}><CircularProgress color='inherit'/></Backdrop>
                 </DialogActions>
             </Dialog>
         </div>
